@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,182 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-jQuery-chained" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/18/jQuery-chained/" class="article-date">
+  	<time datetime="2016-03-18T11:48:13.867Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/jQuery-chained/">jQuery的链式调用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 阅读本文先看看  <a href="/2016/03/18/jQuery-globle">jQuery整体架构的无new构建</a></p>
+</blockquote>
+<p>DOM链式调用的处理：</p>
+<ol>
+<li><p>节约JS代码.</p>
+</li>
+<li><p>所返回的都是同一个对象，可以提高代码的效率</p>
+</li>
+</ol>
+<p>通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。</p>
+<p>利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。</p>
+<p>这个原理就超简单了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aQuery().init().name()</span><br><span class="line"></span><br><span class="line">分解</span><br><span class="line">a = aQuery();</span><br><span class="line">a.init()</span><br><span class="line">a.name()</span><br></pre></td></tr></table></figure>
+<p>把代码分解一下，很明显实现链式的基本条件就是实例this的存在，并且是同一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;</span><br><span class="line">        return this</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>所以我们在需要链式的方法访问this就可以了，因为返回当前实例的this,从而又可以访问自己的原型了</p>
+<blockquote>
+<p>优点：节省代码量，提高代码的效率，代码看起来更优雅</p>
+<p>最糟糕的是所有对象的方法返回的都是对象本身，也就是说没有返回值，这不一定在任何环境下都适合。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-jQuery-globle" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/18/jQuery-globle/" class="article-date">
+  	<time datetime="2016-03-18T11:10:04.377Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/jQuery-globle/">jQuery整体架构的无new构建</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="首先我们来看看jQuery的核心代码"><a href="#首先我们来看看jQuery的核心代码" class="headerlink" title="首先我们来看看jQuery的核心代码"></a>首先我们来看看jQuery的核心代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">(function( window, undefined ) &#123;</span><br><span class="line"></span><br><span class="line">	var jQuery = (function() &#123;</span><br><span class="line"></span><br><span class="line">		// 构建jQuery对象</span><br><span class="line"></span><br><span class="line">		var jQuery = function( selector, context ) &#123;</span><br><span class="line"></span><br><span class="line">		return new jQuery.fn.init( selector, context, rootjQuery );</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// jQuery对象原型</span><br><span class="line"></span><br><span class="line">	jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line"></span><br><span class="line">		constructor: jQuery,</span><br><span class="line"></span><br><span class="line">		init: function( selector, context, rootjQuery ) &#123;</span><br><span class="line">		   //.......</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	// Give the init function the jQuery prototype for later instantiation</span><br><span class="line"></span><br><span class="line">	jQuery.fn.init.prototype = jQuery.fn;        // 这个非常关键的一点</span><br><span class="line"></span><br><span class="line">	// 合并内容到第一个参数中，后续大部分功能都通过该函数扩展</span><br><span class="line"></span><br><span class="line">	// 通过jQuery.fn.extend扩展的函数，大部分都会调用通过jQuery.extend扩展的同名函数</span><br><span class="line"></span><br><span class="line">	jQuery.extend = jQuery.fn.extend = function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	// 在jQuery上扩展静态方法</span><br><span class="line"></span><br><span class="line">	jQuery.extend(&#123;</span><br><span class="line">		//......</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	// 到这里，jQuery对象构造完成，后边的代码都是对jQuery或jQuery对象的扩展</span><br><span class="line"></span><br><span class="line">	return jQuery;</span><br><span class="line"></span><br><span class="line">	&#125;)();</span><br><span class="line"></span><br><span class="line">	window.jQuery = window.$ = jQuery;</span><br><span class="line"></span><br><span class="line">&#125;)(window);</span><br></pre></td></tr></table></figure>
+<p>好了看完源码开始分析</p>
+<h2 id="一：jQuery的无new构建"><a href="#一：jQuery的无new构建" class="headerlink" title="一：jQuery的无new构建"></a>一：jQuery的无new构建</h2><p>JavaScript是函数式语言，函数可以实现类，类就是面向对象编程中最基本的概念，通常： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var aQuery = function(selector, context) &#123;</span><br><span class="line">        //构造函数</span><br><span class="line">&#125;</span><br><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    //原型</span><br><span class="line">    name:function()&#123;&#125;,</span><br><span class="line">    age:function()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = new aQuery();</span><br><span class="line"></span><br><span class="line">a.name();</span><br></pre></td></tr></table></figure>
+<p>这种常规的使用方法，显而易见，jQuery不是这样玩的</p>
+<p>jQuery没有使用new运行符将jQuery显示的实例化，然后直接调用其函数</p>
+<p>按照jQuery的抒写方式</p>
+<blockquote>
+<p>$().ready()</p>
+<p>$().hide()</p>
+</blockquote>
+<p>要实现这样,那么jQuery就要看成一个类，那么$()应该是返回类的实例才对</p>
+<p><strong> 所以尝试的把代码改一下：</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var aQuery = function(selector, context) &#123;</span><br><span class="line">       return new aQuery();</span><br><span class="line">&#125;</span><br><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    name:function()&#123;&#125;,</span><br><span class="line">    age:function()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过new aQuery()，虽然返回的是一个实例，OK ，死循环了！！！！</p>
+<h2 id="那么如何返回一个正确的实例？"><a href="#那么如何返回一个正确的实例？" class="headerlink" title="那么如何返回一个正确的实例？"></a>那么如何返回一个正确的实例？</h2><blockquote>
+<p>在javascript中实例this只跟原型有关系   (这句话很重要哦)</p>
+<p>prototye 说白了就是一个特殊的 <strong>对象</strong> ， 每个函数都有一个默认的prototype属性 ，而 this表示当前对象 ； 没被绕晕就继续</p>
+</blockquote>
+<p>因此我们可以把jQuery类当作一个工厂方法来创建实例，把这个方法放到jQuery.prototye原型对象中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var aQuery = function(selector, context) &#123;</span><br><span class="line">       return  aQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init:function()&#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    name:function()&#123;&#125;,</span><br><span class="line">    age:function()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很明显aQuery()返回的是aQuery类的实例，在init中的this也是指向的aQuery类的实例</p>
+<p><strong>问题来了init的this指向的是aQuery类，如果把init函数也当作一个构造器，那么内部的this要如何处理？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var aQuery = function(selector, context) &#123;</span><br><span class="line">       return  aQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        this.age = 18</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;&#125;,</span><br><span class="line">    age: 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">aQuery().age  //18</span><br></pre></td></tr></table></figure>
+<p>这样的情况下就出错了，因为this只是指向aQuery类的，所以需要设计出独立的作用域才行 </p>
+<hr>
+<p><strong> jQuery框架分隔作用域的处理 </strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jQuery = function( selector, context ) &#123;</span><br><span class="line">        // The jQuery object is actually just the init constructor &apos;enhanced&apos;</span><br><span class="line">        return new jQuery.fn.init( selector, context, rootjQuery );</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>很明显通过实例init函数，每次都构建新的init实例对象，来分隔this,避免交互混淆</p>
+<p><strong> 很显然一个是jQuery，一个是jQuery.fn.init 。返回的不是同一个对象那么肯定又出现一个新的问题 </strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var aQuery = function(selector, context) &#123;</span><br><span class="line">       return  new aQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        this.age = 18</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;&#125;,</span><br><span class="line">    age: 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Uncaught TypeError: Object [object Object] has no method &apos;name&apos; </span><br><span class="line">console.log(aQuery().name())</span><br></pre></td></tr></table></figure>
+<p>抛出错误，无法找到这个方法，所以很明显new的init函数跟jquery类的this分离了，背离我们  <code>要实现这样,那么jQuery就要看成一个类，那么$()应该是返回类的实例才对</code> 这句话</p>
+<h2 id="怎么访问jQuery类原型上的属性与方法？"><a href="#怎么访问jQuery类原型上的属性与方法？" class="headerlink" title="怎么访问jQuery类原型上的属性与方法？"></a>怎么访问jQuery类原型上的属性与方法？</h2><p><strong> 关键点 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">jQuery.fn = jQuery.prototype</span><br><span class="line"></span><br><span class="line">jQuery.fn.init.prototype = jQuery.fn;</span><br><span class="line"></span><br><span class="line">//也就是</span><br><span class="line"></span><br><span class="line">jQuery.fn.init.prototype = jQuery.prototype</span><br></pre></td></tr></table></figure></p>
+<p>通过原型传递解决问题，把jQuery的原型传递给jQuery.prototype.init.prototype</p>
+<p>换句话说jQuery的原型对象覆盖了init构造器的原型对象，this的问题也就解决了</p>
+<p>因为是引用传递所以不需要担心这个循环引用的性能问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var aQuery = function(selector, context) &#123;</span><br><span class="line">       return  new aQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;</span><br><span class="line">        return this.age</span><br><span class="line">    &#125;,</span><br><span class="line">    age: 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">aQuery.prototype.init.prototype = aQuery.prototype;</span><br><span class="line"></span><br><span class="line">console.log(aQuery().name()) //20</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-windowOpen" class="article article-type-post" itemscope itemprop="blogPost">
   
