@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
+						<a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,73 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-windowOpen" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/18/windowOpen/" class="article-date">
+  	<time datetime="2016-03-18T08:31:02.228Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/windowOpen/">window.open不被拦截的解决方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>今天在处理页面ajax请求过程中，想实现请求后打开新页面，就想到通过 js window.open 来实现，但是最终都被浏览器拦截了。</p>
+<p>在谷歌搜索有没有解决方法，有些说可以通过新建a标签，模拟点击来实现，但是测试发现都实现不了，照样被浏览器拦截。</p>
+<p>最后找到了一个折中的办法，可以实现新页面打开，但是没有a标签的那种直接流量新页面的效果。</p>
+</blockquote>
+<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$obj.click(function()&#123;</span><br><span class="line">	var newTab=window.open(&apos;about:blank&apos;);</span><br><span class="line">		$.ajax(&#123;</span><br><span class="line">		    success:function(data)&#123;</span><br><span class="line">			   if(data)&#123;</span><br><span class="line">			    //window.open(&apos;http://www.baidu.com&apos;);</span><br><span class="line">			    newTab.location.href=&quot;http://www.baidu.com&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="其它方法："><a href="#其它方法：" class="headerlink" title="其它方法："></a>其它方法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">$(function()&#123;</span><br><span class="line">	//方法一</span><br><span class="line">	window.showModalDialog(&quot;http://www.111cn.net/&quot;);</span><br><span class="line">	window.showModalDialog(&quot;http://www.111cn.net/&quot;);	 </span><br><span class="line"></span><br><span class="line">	//方法二</span><br><span class="line">	var aa=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		aa.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 100);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var b=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		b.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 200);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var c=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		c.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 300);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var d=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		d.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 400);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var ee=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		ee.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 500);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var f=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		f.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 600);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var g=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		g.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 700);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var h=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		h.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 800);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var i=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		i.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 900);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var j=window.open();</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">	j.location=&quot;http://www.111cn.net&quot;;</span><br><span class="line">	&#125;, 1000);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	//方法三</span><br><span class="line">	var a = $(&quot;&lt;a href=&apos;http://www.111cn.net&apos; target=&apos;_blank&apos;&gt;Apple&lt;/a&gt;&quot;).get(0);</span><br><span class="line">	var e = document.createEvent(&apos;MouseEvents&apos;);</span><br><span class="line">	e.initEvent( &apos;click&apos;, true, true );</span><br><span class="line">	a.dispatchEvent(e);</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">	var a = $(&quot;&lt;a href=&apos;http://www.111cn.net&apos; target=&apos;_blank&apos;&gt;Apple&lt;/a&gt;&quot;).get(0);</span><br><span class="line">	var e = document.createEvent(&apos;MouseEvents&apos;);</span><br><span class="line">	e.initEvent( &apos;click&apos;, true, true );</span><br><span class="line">		a.dispatchEvent(e);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/window/">window</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/HTML/">HTML</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-basefunction" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -238,10 +305,10 @@
 
 
   
-    <article id="post-hexo-two" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hexo-my" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/17/hexo-two/" class="article-date">
+      <a href="/2016/03/17/hexo-my/" class="article-date">
   	<time datetime="2016-03-17T01:36:14.549Z" itemprop="datePublished">2016-03-17</time>
 </a>
     </div>
@@ -255,7 +322,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/17/hexo-two/">自己在搭建Hexo中所遇到的问题</a>
+      <a class="article-title" href="/2016/03/17/hexo-my/">自己在搭建Hexo中所遇到的问题</a>
     </h1>
   
 
@@ -328,10 +395,10 @@
 
 
   
-    <article id="post-hexo-one" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-hexo-system" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/16/hexo-one/" class="article-date">
+      <a href="/2016/03/16/hexo-system/" class="article-date">
   	<time datetime="2016-03-16T09:35:22.254Z" itemprop="datePublished">2016-03-16</time>
 </a>
     </div>
@@ -345,7 +412,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/16/hexo-one/">Hexo的基本命令</a>
+      <a class="article-title" href="/2016/03/16/hexo-system/">Hexo的基本命令</a>
     </h1>
   
 
