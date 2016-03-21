@@ -2293,5 +2293,5 @@ pre .css ~ * .id {
   overflow: hidden;
 }
 #container .left-col .overlay {
-  background: url("../img/bg.jpg");
+  background: url("/img/bg.jpg");
 }
