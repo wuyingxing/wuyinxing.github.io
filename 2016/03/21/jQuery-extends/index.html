@@ -4,54 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>jQuery的链式调用 | 摘星弄月</title>
+  <title>jQuery.extend 和 jQuery.fn.extend | 摘星弄月</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="阅读本文前，请阅读  jQuery整体架构的无new构建
 
-DOM链式调用的处理：
-
-节约JS代码.
-
-所返回的都是同一个对象，可以提高代码的效率
-
-
-通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。
-利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。
-这个原理就超简单了
-123456aQuery().init().name()分解a">
+jQuery的主体框架就是这样，但是根据一般设计者的习惯，如果要为jQuery或者jQuery prototype添加属性方法，同样如果要提供给开发者对方法的扩展，从封装的角度讲是不是应该提供一个接口才对，字面就能看懂是对函数扩展，而不是看上去直接修改prototype.友好的用户接口，
+jQuery支持自己扩展属性，这个对外提供了一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery的链式调用">
-<meta property="og:url" content="http://yoursite.com/2016/03/18/jQuery-chained/index.html">
+<meta property="og:title" content="jQuery.extend 和 jQuery.fn.extend">
+<meta property="og:url" content="http://yoursite.com/2016/03/21/jQuery-extends/index.html">
 <meta property="og:site_name" content="摘星弄月">
 <meta property="og:description" content="阅读本文前，请阅读  jQuery整体架构的无new构建
 
-DOM链式调用的处理：
-
-节约JS代码.
-
-所返回的都是同一个对象，可以提高代码的效率
-
-
-通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。
-利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。
-这个原理就超简单了
-123456aQuery().init().name()分解a">
-<meta property="og:updated_time" content="2016-03-21T02:20:48.677Z">
+jQuery的主体框架就是这样，但是根据一般设计者的习惯，如果要为jQuery或者jQuery prototype添加属性方法，同样如果要提供给开发者对方法的扩展，从封装的角度讲是不是应该提供一个接口才对，字面就能看懂是对函数扩展，而不是看上去直接修改prototype.友好的用户接口，
+jQuery支持自己扩展属性，这个对外提供了一">
+<meta property="og:updated_time" content="2016-03-21T02:20:37.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery的链式调用">
+<meta name="twitter:title" content="jQuery.extend 和 jQuery.fn.extend">
 <meta name="twitter:description" content="阅读本文前，请阅读  jQuery整体架构的无new构建
 
-DOM链式调用的处理：
-
-节约JS代码.
-
-所返回的都是同一个对象，可以提高代码的效率
-
-
-通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。
-利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。
-这个原理就超简单了
-123456aQuery().init().name()分解a">
+jQuery的主体框架就是这样，但是根据一般设计者的习惯，如果要为jQuery或者jQuery prototype添加属性方法，同样如果要提供给开发者对方法的扩展，从封装的角度讲是不是应该提供一个接口才对，字面就能看懂是对函数扩展，而不是看上去直接修改prototype.友好的用户接口，
+jQuery支持自己扩展属性，这个对外提供了一">
   
     <link rel="alternative" href="/atom.xml" title="摘星弄月" type="application/atom+xml">
   
@@ -199,11 +172,11 @@ DOM链式调用的处理：
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-jQuery-chained" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jQuery-extends" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/18/jQuery-chained/" class="article-date">
-  	<time datetime="2016-03-18T11:48:13.867Z" itemprop="datePublished">2016-03-18</time>
+      <a href="/2016/03/21/jQuery-extends/" class="article-date">
+  	<time datetime="2016-03-21T02:07:17.199Z" itemprop="datePublished">2016-03-21</time>
 </a>
     </div>
   
@@ -216,7 +189,7 @@ DOM链式调用的处理：
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery的链式调用
+      jQuery.extend 和 jQuery.fn.extend
     </h1>
   
 
@@ -243,22 +216,24 @@ DOM链式调用的处理：
         <blockquote>
 <p> 阅读本文前，请阅读  <a href="/2016/03/18/jQuery-globle">jQuery整体架构的无new构建</a></p>
 </blockquote>
-<p>DOM链式调用的处理：</p>
-<ol>
-<li><p>节约JS代码.</p>
+<p>jQuery的主体框架就是这样，但是根据一般设计者的习惯，如果要为jQuery或者jQuery prototype添加属性方法，同样如果要提供给开发者对方法的扩展，从封装的角度讲是不是应该提供一个接口才对，字面就能看懂是对函数扩展，而不是看上去直接修改prototype.友好的用户接口，</p>
+<p>jQuery支持自己扩展属性，这个对外提供了一个接口，jQuery.fn.extend()来对对象增加方法</p>
+<p>从jQuery的源码中可以看到，jQuery.extend和jQuery.fn.extend其实是同指向同一方法的不同引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">jQuery.extend = jQuery.fn.extend = function() &#123;&#125;</span><br><span class="line"></span><br><span class="line">jQuery.extend 对jQuery本身的属性和方法进行了扩展</span><br><span class="line"></span><br><span class="line">jQuery.fn.extend 对jQuery.fn的属性和方法进行了扩展</span><br></pre></td></tr></table></figure>
+<p>通过extend()函数可以方便快速的扩展功能，不会破坏jQuery的原型结构</p>
+<p>jQuery.extend = jQuery.fn.extend = function(){…}; 这个是连等，也就是2个指向同一个函数，怎么会实现不同的功能呢？这就是this 力量了！</p>
+<p>针对fn与jQuery其实是2个不同的对象，在之前有讲述：</p>
+<ul>
+<li><p>jQuery.extend 调用的时候，this是指向jQuery对象的(jQuery是函数，也是对象！)，所以这里扩展在jQuery上。</p>
 </li>
-<li><p>所返回的都是同一个对象，可以提高代码的效率</p>
+<li><p>而jQuery.fn.extend 调用的时候，this指向fn对象，jQuery.fn 和jQuery.prototype指向同一对象，扩展fn就是扩展jQuery.prototype原型对象。 (从<a href="/2016/03/18/jQuery-globle">jQuery整体架构的无new构建</a>可以推理出 jQuery.fn.extend = jQuery.prototype.extend)</p>
 </li>
-</ol>
-<p>通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。</p>
-<p>利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。</p>
-<p>这个原理就超简单了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aQuery().init().name()</span><br><span class="line"></span><br><span class="line">分解</span><br><span class="line">a = aQuery();</span><br><span class="line">a.init()</span><br><span class="line">a.name()</span><br></pre></td></tr></table></figure>
-<p>把代码分解一下，很明显实现链式的基本条件就是实例this的存在，并且是同一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;</span><br><span class="line">        return this</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
-<p>所以我们在需要链式的方法访问this就可以了，因为返回当前实例的this,从而又可以访问自己的原型了</p>
-<blockquote>
-<p>优点：节省代码量，提高代码的效率，代码看起来更优雅</p>
-<p>最糟糕的是所有对象的方法返回的都是对象本身，也就是说没有返回值，这不一定在任何环境下都适合。</p>
+<li><p>这里增加的是原型方法，也就是对象方法了。所以jQuery的api中提供了以上2中扩展函数。</p>
+</li>
+</ul>
+<h2 id="在实际应用中"><a href="#在实际应用中" class="headerlink" title="在实际应用中"></a>在实际应用中</h2><blockquote>
+<p>Objectj Query.extend( target, object1, [objectN])   用一个或多个其他对象来扩展一个对象，返回被扩展的对象</p>
+<p>jQuery.fn.extend(object) 对jQuery.prototype进得扩展，就是为jQuery类添加“成员函数”。jQuery类的实例可以使用这个“成员函数”。</p>
 </blockquote>
 
       
@@ -269,18 +244,9 @@ DOM链式调用的处理：
     
 <nav id="article-nav">
   
-    <a href="/2016/03/21/jQuery-extends/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          jQuery.extend 和 jQuery.fn.extend
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/18/jQuery-globle/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jQuery整体架构的无new构建</div>
+    <a href="/2016/03/18/jQuery-chained/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery的链式调用</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -315,7 +281,7 @@ DOM链式调用的处理：
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="jQuery-chained" data-title="jQuery的链式调用" data-url="http://yoursite.com/2016/03/18/jQuery-chained/"></div>
+	<div class="ds-thread" data-thread-key="jQuery-extends" data-title="jQuery.extend 和 jQuery.fn.extend" data-url="http://yoursite.com/2016/03/21/jQuery-extends/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
