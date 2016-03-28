@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,162 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-meta" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/28/meta/" class="article-date">
+  	<time datetime="2016-03-28T07:46:15.630Z" itemprop="datePublished">2016-03-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/28/meta/">HTML中的meta标签</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>meta标签，在开发webapp时起到非常重要的作用，meta标签共有两个属性，分别是http-equiv属性和name属性。</strong></p>
+<h1 id="1-name属性"><a href="#1-name属性" class="headerlink" title="1. name属性"></a>1. name属性</h1><p>name属性主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。<br>meta标签中name属性语法格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;。</span><br></pre></td></tr></table></figure>
+<p><strong> 其中name属性共有以下几种参数。</strong></p>
+<blockquote>
+<p><strong>keywords(关键字)</strong></p>
+</blockquote>
+<p><em>说明：用于告诉搜索引擎，你网页的关键字。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;哈哈哈哈哈哈哈&quot;&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>description(网站内容的描述)</strong></p>
+</blockquote>
+<p><em>说明：用于告诉搜索引擎，你网站的主要内容。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;description&quot; content=&quot;哈哈哈哈哈哈哈&quot;&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>viewport(移动端的窗口)</strong></p>
+</blockquote>
+<p><em>说明：这个概念较为复杂，具体的会在下篇博文中讲述。这个属性常用于设计移动端网页。在用bootstrap,AmazeUI等框架时候都有用过viewport。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=&quot;width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0&quot; name=&quot;viewport&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong> robots(定义搜索引擎爬虫的索引方式)</strong></p>
+</blockquote>
+<p><em>说明：robots用来告诉爬虫哪些页面需要索引，哪些页面不需要索引。<br>content的参数有all,none,index,noindex,follow,nofollow。默认是all。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;robots&quot; content=&quot;none&quot;&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>具体参数如下：
+
+1.  none : 搜索引擎将忽略此网页，等价于noindex，nofollow。
+2.  noindex : 搜索引擎不索引此网页。
+3.  nofollow: 搜索引擎不继续通过此网页的链接索引搜索其它的网页。
+4.  all : 搜索引擎将索引此网页与继续通过此网页的链接索引，等价于index，follow。
+5.  index : 搜索引擎索引此网页。
+6.  follow : 搜索引擎继续通过此网页的链接索引搜索其它的网页。
+</code></pre><blockquote>
+<p><strong>author(作者)</strong></p>
+</blockquote>
+<p><em>说明：用于标注网页作者</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;author&quot; content=&quot;xxx,xxxx@xx.com&quot;&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong> generator(网页制作软件)</strong><br><em><br>说明：用于标明网页是什么软件做的</em></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;generator&quot; content=&quot;Sublime Text3&quot;&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>opyright(版权)</strong></p>
+</blockquote>
+<p><em>说明：用于标注版权信息</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;copyright&quot; content=&quot;xxxx&quot;&gt; //代表该网站为xxxx个人版权所有。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>revisit-after(搜索引擎爬虫重访时间)</strong></p>
+</blockquote>
+<p><em>说明：如果页面不是经常更新，为了减轻搜索引擎爬虫对服务器带来的压力，可以设置一个爬虫的重访时间。如果重访时间过短，爬虫将按它们定义的默认时间来访问。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;revisit-after&quot; content=&quot;7 days&quot; &gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>renderer(双核浏览器渲染方式)</strong></p>
+</blockquote>
+<p><em>说明：：renderer是为双核浏览器准备的，用于指定双核浏览器默认以何种方式渲染页面。比如说360浏览器。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt; //默认webkit内核</span><br><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;ie-comp&quot;&gt; //默认IE兼容模式</span><br><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;ie-stand&quot;&gt; //默认IE标准模式</span><br></pre></td></tr></table></figure>
+<h1 id="2-http-equiv属性"><a href="#2-http-equiv属性" class="headerlink" title="2. http-equiv属性"></a>2. http-equiv属性</h1><p><strong>相当于http的文件头作用</strong> meta标签中http-equiv属性语法格式是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中http-equiv属性主要有以下几种参数：</p>
+<blockquote>
+<p><strong>content-Type(设定网页字符集)(推荐使用HTML5的方式)</strong></p>
+</blockquote>
+<p><em>说明：用于设定网页字符集，便于浏览器解析与渲染页面</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;content-Type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;  //旧的HTML，不推荐</span><br><span class="line"></span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt; //HTML5设定网页字符集的方式，推荐使用UTF-8</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>X-UA-Compatible(浏览器采取何种版本渲染当前页面)</strong></p>
+</blockquote>
+<p><em>说明：用于告知浏览器以何种版本来渲染页面。（一般都设置为最新模式，在各大框架中这个设置也很常见。）</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt; //指定IE和Chrome使用最新版本渲染当前页面</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>cache-control(指定请求和响应遵循的缓存机制)</strong></p>
+</blockquote>
+<p><em>用法一 ：指导浏览器如何缓存某个响应以及缓存多长时间。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>具体参数如下：
+
+1.  no-cache: 先发送请求，与服务器确认该资源是否被更改，如果未被更改，则使用缓存。
+2.  no-store: 不允许缓存，每次都要去服务器上，下载完整的响应。（安全措施）。
+3.  public : 缓存所有响应，但并非必须。因为max-age也可以做到相同效果。
+4.  private : 只为单个用户缓存，因此不允许任何中继进行缓存。（比如说CDN就不允许缓存private的响应）
+5.  maxage : 表示当前请求开始，该响应在多久内能被缓存和重用，而不去服务器重新请求。例如：max-age=60表示响应可以再缓存和重用 60 秒。
+</code></pre><p><em>用法二 ：用于禁止当前页面在移动端浏览时，被百度自动转码。虽然百度的本意是好的，但是转码效果很多时候却不尽人意。所以可以在head中加入例子中的那句话，就可以避免百度自动转码了。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>expires(网页到期时间)</strong></p>
+</blockquote>
+<p><em>说明：用于设定网页的到期时间，过期后网页必须到服务器上重新传输。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;Sunday 26 October 2016 01:00 GMT&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong> refresh(自动刷新并指向某页面)</strong></p>
+</blockquote>
+<p><em>说明：网页将在设定的时间内，自动刷新并调向设定的网址。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;2；URL=http://www.baidu.com/&quot;&gt; //意思是2秒后跳转向百度</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong> Set-Cookie(cookie设定)</strong></p>
+</blockquote>
+<p><em>说明：如果网页过期。那么这个网页存在本地的cookies也会被自动删除。。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Set-Cookie&quot; content=&quot;name, date&quot;&gt; //格式</span><br><span class="line"></span><br><span class="line">&lt;meta http-equiv=&quot;Set-Cookie&quot; content=&quot;User=Lxxyx; path=/; expires=Sunday, 10-Jan-16 10:00:00 GMT&quot;&gt; //具体范例</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/HTML/">HTML</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-node-function" class="article article-type-post" itemscope itemprop="blogPost">
   
