@@ -4,54 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>jQuery的链式调用 | 摘星弄月</title>
+  <title>Android手机浏览器overflow是scroll失效 | 摘星弄月</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="阅读本文前，请阅读  jQuery整体架构的无new构建
-
-DOM链式调用的处理：
-
-节约JS代码.
-
-所返回的都是同一个对象，可以提高代码的效率
-
-
-通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。
-利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。
-这个原理就超简单了
-123456aQuery().init().name()分解a">
+  <meta name="description" content="在一个微信web项目中，发现Android手机浏览器中 overflow : scroll 失效
+ Android低版本中 QQ X5浏览器 对div的 overflow支持很差，只能用body和html。
+ 在4.0以上的浏览器中不能存在两个overflow是scroll的div，即：嵌套的overflow : scroll，第二个一定失效
+ 第一种办法就是 : 在需要scroll时候，尽量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery的链式调用">
-<meta property="og:url" content="http://yoursite.com/2016/03/18/jQuery-chained/index.html">
+<meta property="og:title" content="Android手机浏览器overflow是scroll失效">
+<meta property="og:url" content="http://yoursite.com/2016/03/29/m-webbug-3/index.html">
 <meta property="og:site_name" content="摘星弄月">
-<meta property="og:description" content="阅读本文前，请阅读  jQuery整体架构的无new构建
-
-DOM链式调用的处理：
-
-节约JS代码.
-
-所返回的都是同一个对象，可以提高代码的效率
-
-
-通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。
-利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。
-这个原理就超简单了
-123456aQuery().init().name()分解a">
-<meta property="og:updated_time" content="2016-03-21T02:21:04.918Z">
+<meta property="og:description" content="在一个微信web项目中，发现Android手机浏览器中 overflow : scroll 失效
+ Android低版本中 QQ X5浏览器 对div的 overflow支持很差，只能用body和html。
+ 在4.0以上的浏览器中不能存在两个overflow是scroll的div，即：嵌套的overflow : scroll，第二个一定失效
+ 第一种办法就是 : 在需要scroll时候，尽量">
+<meta property="og:updated_time" content="2016-03-29T11:44:51.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery的链式调用">
-<meta name="twitter:description" content="阅读本文前，请阅读  jQuery整体架构的无new构建
-
-DOM链式调用的处理：
-
-节约JS代码.
-
-所返回的都是同一个对象，可以提高代码的效率
-
-
-通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。
-利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。
-这个原理就超简单了
-123456aQuery().init().name()分解a">
+<meta name="twitter:title" content="Android手机浏览器overflow是scroll失效">
+<meta name="twitter:description" content="在一个微信web项目中，发现Android手机浏览器中 overflow : scroll 失效
+ Android低版本中 QQ X5浏览器 对div的 overflow支持很差，只能用body和html。
+ 在4.0以上的浏览器中不能存在两个overflow是scroll的div，即：嵌套的overflow : scroll，第二个一定失效
+ 第一种办法就是 : 在需要scroll时候，尽量">
   
     <link rel="alternative" href="/atom.xml" title="摘星弄月" type="application/atom+xml">
   
@@ -199,11 +172,11 @@ DOM链式调用的处理：
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-jQuery-chained" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-m-webbug-3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/18/jQuery-chained/" class="article-date">
-  	<time datetime="2016-03-18T11:48:13.867Z" itemprop="datePublished">2016-03-18</time>
+      <a href="/2016/03/29/m-webbug-3/" class="article-date">
+  	<time datetime="2016-03-29T11:21:40.796Z" itemprop="datePublished">2016-03-29</time>
 </a>
     </div>
   
@@ -216,7 +189,7 @@ DOM链式调用的处理：
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery的链式调用
+      Android手机浏览器overflow是scroll失效
     </h1>
   
 
@@ -225,12 +198,12 @@ DOM链式调用的处理：
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobileWeb/">mobileWeb</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+	<a class="article-category-link" href="/categories/trouble/">trouble</a>
 	</div>
 
 
@@ -241,24 +214,11 @@ DOM链式调用的处理：
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p> 阅读本文前，请阅读  <a href="/2016/03/18/jQuery-globle">jQuery整体架构的无new构建</a></p>
-</blockquote>
-<p>DOM链式调用的处理：</p>
-<ol>
-<li><p>节约JS代码.</p>
-</li>
-<li><p>所返回的都是同一个对象，可以提高代码的效率</p>
-</li>
-</ol>
-<p>通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。</p>
-<p>利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。</p>
-<p>这个原理就超简单了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aQuery().init().name()</span><br><span class="line"></span><br><span class="line">分解</span><br><span class="line">a = aQuery();</span><br><span class="line">a.init()</span><br><span class="line">a.name()</span><br></pre></td></tr></table></figure>
-<p>把代码分解一下，很明显实现链式的基本条件就是实例this的存在，并且是同一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;</span><br><span class="line">        return this</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
-<p>所以我们在需要链式的方法访问this就可以了，因为返回当前实例的this,从而又可以访问自己的原型了</p>
-<blockquote>
-<p>优点：节省代码量，提高代码的效率，代码看起来更优雅</p>
-<p>最糟糕的是所有对象的方法返回的都是对象本身，也就是说没有返回值，这不一定在任何环境下都适合。</p>
+<p> 在一个微信web项目中，发现Android手机浏览器中 overflow : scroll 失效</p>
+<p> Android低版本中 QQ X5浏览器 对div的 overflow支持很差，只能用body和html。</p>
+<p> 在4.0以上的浏览器中不能存在两个overflow是scroll的div，即：嵌套的overflow : scroll，第二个一定失效</p>
+<p> 第一种办法就是 : 在需要scroll时候，尽量保证当前页面只有一个overflow : scroll 作用于页面</p>
+<p> 第二种办法就是 : 采用iScroll插件（早期用过iScroll4，对于现在的iScroll5不怎么了解,还需要注意的是iscroll是存在BUG的）</p>
 </blockquote>
 
       
@@ -269,18 +229,9 @@ DOM链式调用的处理：
     
 <nav id="article-nav">
   
-    <a href="/2016/03/21/jQuery-extends/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          jQuery.extend 和 jQuery.fn.extend
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/18/jQuery-globle/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jQuery整体架构的无new构建</div>
+    <a href="/2016/03/29/m-webbug-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动web开发中的全局设置</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -315,7 +266,7 @@ DOM链式调用的处理：
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="jQuery-chained" data-title="jQuery的链式调用" data-url="http://yoursite.com/2016/03/18/jQuery-chained/"></div>
+	<div class="ds-thread" data-thread-key="m-webbug-3" data-title="Android手机浏览器overflow是scroll失效" data-url="http://yoursite.com/2016/03/29/m-webbug-3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
