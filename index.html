@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 10px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 15px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,77 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-m-webbug-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/29/m-webbug-2/" class="article-date">
+  	<time datetime="2016-03-29T01:28:25.694Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/m-webbug-2/">移动web开发中的全局设置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    font-family: &quot;Helvetica Neue&quot;, Helvetica, STHeiTi, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="设置全局的CSS样式"><a href="#设置全局的CSS样式" class="headerlink" title="设置全局的CSS样式"></a>设置全局的CSS样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">a, img &#123;</span><br><span class="line">    -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html, body , .xxx &#123;</span><br><span class="line">    -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */</span><br><span class="line">    user-select: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html, a, .xxx &#123;</span><br><span class="line">    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  /* 移动端a标签 取消touch高亮效果 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img &#123;</span><br><span class="line">    -webkit-touch-callout: none;   /* 何禁止保存或拷贝图像(该方法只在 iOS 上有效。) */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.xxx &#123;</span><br><span class="line">    overflow: auto; /* auto | scroll */</span><br><span class="line">    -webkit-overflow-scrolling: touch;     /* 加速滚动，这个属性存在一定的兼容性 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">    -webkit-text-size-adjust: 100%;  /* 禁止文本缩放 当移动设备横竖屏切换时，文本的大小会重新计算，进行相应的缩放，当我们不需要这种情况时，可以选择禁止 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="邮箱设置"><a href="#邮箱设置" class="headerlink" title="邮箱设置"></a>邮箱设置</h2><blockquote>
+<p>在 Android （iOS不会）上，浏览器会自动识别看起来像邮箱地址的字符串，不论有你没有加上邮箱链接，当你在这个字符串上长按，会弹出发邮件的提示。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot; /&gt;   //关闭邮箱地址识别</span><br><span class="line"></span><br><span class="line">&lt;a mailto:&quot;dooyoe@gmail.com&quot;&gt;dooyoe@gmail.com&lt;/a&gt; //  开启邮件发送</span><br></pre></td></tr></table></figure>
+<h2 id="移动端手机号码设置"><a href="#移动端手机号码设置" class="headerlink" title="移动端手机号码设置"></a>移动端手机号码设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt; //关闭电话识别 （iOS（其他浏览器和Android均不会）上会对看起来像是电话号码的数字处理为电话链接）</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;tel:123456&quot;&gt;123456&lt;/a&gt;  //开启电话功能</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;sms:123456&quot;&gt;123456&lt;/a&gt; // 开启短信功能</span><br></pre></td></tr></table></figure>
+<h2 id="屏幕设置"><a href="#屏幕设置" class="headerlink" title="屏幕设置"></a>屏幕设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot; name=&quot;viewport&quot;&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> width                      – viewport的宽度<br> height                     – viewport的高度<br> initial-scale          – 初始的缩放比例<br> minimum-scale  – 允许用户缩放到的最小比例<br> maximum-scale – 允许用户缩放到的最大比例<br> user-scalable       – 用户是否可以手动缩放</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- IOS中Safari允许全屏浏览 --&gt;</span><br><span class="line">&lt;meta content=&quot;yes&quot; name=&quot;apple-mobile-web-app-capable&quot;&gt;  </span><br><span class="line"></span><br><span class="line">&lt;!-- IOS中Safari顶端状态条样式 --&gt;</span><br><span class="line">&lt;meta content=&quot;black&quot; name=&quot;apple-mobile-web-app-status-bar-style&quot;&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- 忽略邮箱地址电话 --&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;adress=no&quot;&gt;</span><br><span class="line">也可以连写：meta name=&quot;format-detection&quot; content=&quot;telephone=no,email=no,adress=no&quot; </span><br><span class="line"></span><br><span class="line">&lt;!-- IOS中Safari设置保存到桌面图标 --&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;custom_icon.png&quot;&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- uc强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- UC强制全屏 --&gt; </span><br><span class="line">&lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- UC应用模式 --&gt; </span><br><span class="line">&lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- QQ强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- QQ强制全屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- QQ应用模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;</span><br><span class="line"></span><br><span class="line">... ...</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobileWeb/">mobileWeb</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/HTML/">HTML</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-m-webbug-1" class="article article-type-post" itemscope itemprop="blogPost">
   
