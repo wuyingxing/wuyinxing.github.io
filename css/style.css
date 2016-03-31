@@ -2296,5 +2296,8 @@ pre .css ~ * .id {
   background: url("/img/bg.jpg");
 }
 #container #mobile-nav .overlay {
-  background: url("/img/bg.jpg");
+  background: url("/img/bg.jpg") no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  background-size: 100% 100%;
 }
