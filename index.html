@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/media/" style="font-size: 10px;">media</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -163,6 +163,97 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-svg" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/31/svg/" class="article-date">
+  	<time datetime="2016-03-31T02:12:55.339Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/31/svg/">HTML中SVG图像图像处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SVG是“可缩放矢量图”（Scalable Vector Graphics）的缩写，是一种描述向量图形的XML格式的标记化语言。也就是说，SVG本质上是文本文件，格式采用XML，可以在浏览器中显示出矢量图像。由于结构是XML格式，使得它可以插入HTML文档，成为DOM的一部分，然后用JavaScript和CSS进行操作。<br>相比传统的图像文件格式（比如JPG和PNG），SVG图像的优势就是文件体积小，并且放大多少倍都不会失真，因此非常合适用于网页。</p>
+<p>SVG图像可以用Adobe公司的Illustrator软件、开源软件Inkscape等生成。目前，所有主流浏览器都支持，对于低于IE 9的浏览器，可以使用第三方的polyfills函数库。</p>
+<h2 id="插入SVG文件"><a href="#插入SVG文件" class="headerlink" title="插入SVG文件"></a>插入SVG文件</h2><p>SVG插入网页的方法有多种，可以用在img、object、embed、iframe等标签，以及CSS的background-image属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;circle.svg&quot;&gt;</span><br><span class="line">&lt;object id=&quot;object&quot; data=&quot;circle.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span><br><span class="line">&lt;embed id=&quot;embed&quot; src=&quot;icon.svg&quot; type=&quot;image/svg+xml&quot;&gt;</span><br><span class="line">&lt;iframe id=&quot;iframe&quot; src=&quot;icon.svg&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<p>上面是四种在网页中插入SVG图像的方式。</p>
+<p>此外，SVG文件还可以插入其他DOM元素，比如div元素，请看下面的例子（使用了jQuery函数库）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;stage&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(&quot;#stage&quot;).load(&apos;icon.svg&apos;,function(response)&#123;</span><br><span class="line">  $(this).addClass(&quot;svgLoaded&quot;);</span><br><span class="line">  if(!response)&#123;</span><br><span class="line">    // 加载失败的处理代码</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="svg格式"><a href="#svg格式" class="headerlink" title="svg格式"></a>svg格式</h2><p>SVG文件采用XML格式，就是普通的文本文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">  &lt;circle cx=&quot;30&quot;  cy=&quot;50&quot; r=&quot;25&quot; /&gt;</span><br><span class="line">  &lt;circle cx=&quot;90&quot;  cy=&quot;50&quot; r=&quot;25&quot; class=&quot;red&quot; /&gt;</span><br><span class="line">  &lt;circle cx=&quot;150&quot; cy=&quot;50&quot; r=&quot;25&quot; class=&quot;fancy&quot; /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>上面的svg文件，定义了三个圆，它们的cx、cy、r属性分别为x坐标、y坐标和半径。利用class属性，可以为这些圆指定样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.red &#123;</span><br><span class="line">  fill: red; /* not background-color! */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.fancy &#123;</span><br><span class="line">  fill: none;</span><br><span class="line">  stroke: black; /* similar to border-color */</span><br><span class="line">  stroke-width: 3pt; /* similar to border-width */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，fill属性表示填充色，stroke属性表示描边色，stroke-width属性表示边线宽度。</p>
+<p>除了circle标签表示圆，SVG文件还可以使用表示其他形状的标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">  &lt;line x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;200&quot; y2=&quot;0&quot; style=&quot;stroke:rgb(0,0,0);stroke-width:1&quot;/&gt;&lt;/line&gt;</span><br><span class="line">  &lt;rect x=&quot;0&quot; y=&quot;0&quot; height=&quot;100&quot; width=&quot;200&quot; style=&quot;stroke: #70d5dd; fill: #dd524b&quot; /&gt;</span><br><span class="line">  &lt;ellipse cx=&quot;60&quot; cy=&quot;60&quot; ry=&quot;40&quot; rx=&quot;20&quot; stroke=&quot;black&quot; stroke-width=&quot;5&quot; fill=&quot;silver&quot;/&gt;&lt;/ellipse&gt;</span><br><span class="line">	&lt;polygon fill=&quot;green&quot; stroke=&quot;orange&quot; stroke-width=&quot;10&quot; points=&quot;350, 75  379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161&quot;/&gt;&lt;polygon&gt;</span><br><span class="line">	&lt;path id=&quot;path1&quot; d=&quot;M160.143,196c0,0,62.777-28.033,90-17.143c71.428,28.572,73.952-25.987,84.286-21.428&quot; style=&quot;fill:none;stroke:2;&quot;&gt;&lt;/path&gt;  </span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，line、rect、ellipse、polygon和path标签，分别表示线条、矩形、椭圆、多边形和路径。</p>
+<p>g标签用于将多个形状组成一组，表示group。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">  &lt;g transform=&quot;translate(5, 15)&quot;&gt;</span><br><span class="line">    &lt;text x=&quot;0&quot; y=&quot;0&quot;&gt;Howdy!&lt;/text&gt;</span><br><span class="line">    &lt;path d=&quot;M0,50 L50,0 Q100,0 100,50&quot;</span><br><span class="line">      fill=&quot;none&quot; stroke-width=&quot;3&quot; stroke=&quot;black&quot; /&gt;</span><br><span class="line">  &lt;/g&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="SVG文件的JavaScript操作"><a href="#SVG文件的JavaScript操作" class="headerlink" title="SVG文件的JavaScript操作"></a>SVG文件的JavaScript操作</h2><ul>
+<li>获取SVG DOM<br>如果使用img标签插入SVG文件，则无法获取SVG DOM。使用object、iframe、embed标签，可以获取SVG DOM。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var svgObject = document.getElementById(&quot;object&quot;).contentDocument;</span><br><span class="line">var svgIframe = document.getElementById(&quot;iframe&quot;).contentDocument;</span><br><span class="line">var svgEmbed = document.getElementById(&quot;embed&quot;).getSVGDocument();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>由于svg文件就是一般的XML文件，因此可以用DOM方法，选取页面元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 改变填充色</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).style.fill = &quot;red&quot;;</span><br><span class="line"></span><br><span class="line">// 改变元素属性</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).setAttribute(&quot;class&quot;, &quot;changedColors&quot;);</span><br><span class="line"></span><br><span class="line">// 绑定事件回调函数</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).addEventListener(&quot;click&quot;, function() &#123;</span><br><span class="line">   console.log(&quot;clicked&quot;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读取svg源码<br>由于svg文件就是一个XML代码的文本文件，因此可以通过读取XML代码的方式，读取svg源码。<br>假定网页中有一个svg元素。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;svg-container&quot;&gt;</span><br><span class="line">	&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xml:space=&quot;preserve&quot; width=&quot;500&quot; height=&quot;440&quot;&gt;</span><br><span class="line">		&lt;!-- svg code --&gt;</span><br><span class="line">	&lt;/svg&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用XMLSerializer实例的serializeToString方法，获取svg元素的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var svgString = new XMLSerializer().serializeToString(document.querySelector(&apos;svg&apos;));</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>将svg图像转为canvas图像<br>首先，需要新建一个img对象，将svg图像指定到该img对象的src属性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var img = new Image();</span><br><span class="line">var svg = new Blob([svgString], &#123;type: &quot;image/svg+xml;charset=utf-8&quot;&#125;);</span><br><span class="line"></span><br><span class="line">var DOMURL = self.URL || self.webkitURL || self;</span><br><span class="line">var url = DOMURL.createObjectURL(svg);</span><br><span class="line"></span><br><span class="line">img.src = url;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后，当图像加载完成后，再将它绘制到canvas元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">img.onload = function() &#123;</span><br><span class="line">	var canvas = document.getElementById(&quot;canvas&quot;);</span><br><span class="line">	var ctx = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">    ctx.drawImage(img, 0, 0);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/media/">media</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/HTML/">HTML</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-m-webbug-3" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1087,75 +1178,10 @@
 
 
   
-    <article id="post-hexo-system" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/03/16/hexo-system/" class="article-date">
-  	<time datetime="2016-03-16T09:35:22.254Z" itemprop="datePublished">2016-03-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/16/hexo-system/">Hexo的基本命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/tools/">tools</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
