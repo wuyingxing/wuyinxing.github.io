@@ -2295,3 +2295,6 @@ pre .css ~ * .id {
 #container .left-col .overlay {
   background: url("/img/bg.jpg");
 }
+#container #mobile-nav .overlay {
+  background: url("/img/bg.jpg");
+}
