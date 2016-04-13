@@ -105,7 +105,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 15px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/API/" style="font-size: 15px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -166,6 +166,150 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-gulp-tools" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/13/gulp-tools/" class="article-date">
+  	<time datetime="2016-04-13T06:35:46.430Z" itemprop="datePublished">2016-04-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/13/gulp-tools/">Gulp 任务管理工具</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-安装和入门"><a href="#1-安装和入门" class="headerlink" title="1 . 安装和入门"></a>1 . 安装和入门</h1><p><strong> 全局安装 gulp：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --global gulp    </span><br><span class="line"></span><br><span class="line">或者简写</span><br><span class="line"></span><br><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure>
+<p><strong> 作为项目的开发依赖（devDependencies）安装：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev gulp</span><br></pre></td></tr></table></figure>
+<p><strong>  在项目根目录下创建一个名为 gulpfile.js 的文件：</strong></p>
+<p>项目根目录中的gulpfile.js，是Gulp的配置文件。下面就是一个典型的gulpfile.js文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;);</span><br><span class="line">var uglify = require(&apos;gulp-uglify&apos;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;minify&apos;, function () &#123;</span><br><span class="line">  gulp.src(&apos;js/app.js&apos;)</span><br><span class="line">    .pipe(uglify())</span><br><span class="line">    .pipe(gulp.dest(&apos;build&apos;))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，gulpfile.js加载gulp和gulp-uglify模块之后，使用gulp模块的task方法指定任务minify。</p>
+<p>task方法有两个参数，第一个是任务名，第二个是任务函数。</p>
+<p>在任务函数中，使用gulp模块的src方法，指定所要处理的文件，然后使用pipe方法，将上一步的输出转为当前的输入，进行链式处理。</p>
+<p><strong> task方法的回调函数使用了两次pipe方法，也就是说做了两种处理。</strong></p>
+<p>第一种处理是使用gulp-uglify模块，压缩源码；</p>
+<p>第二种处理是使用gulp模块的dest方法，将上一步的输出写入本地文件夹，这里是build.js（代码中省略了后缀名js）。</p>
+<p>执行minify任务时，就在项目目录中执行下面命令就可以了。</p>
+<p><strong>4. 运行 gulp：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gulp minify  </span><br><span class="line"></span><br><span class="line">// 注释：： </span><br><span class="line">$ gulp &lt;taskName&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>默认的名为 default 的任务（task）将会被运行，如果没有taskName这默认执行叫default 的任务。</p>
+<p>想要单独执行特定的任务（task），请输入 gulp [task] [othertask]。</p>
+</blockquote>
+<p>从上面的例子中可以看到，gulp充分使用了“管道”思想，就是一个数据流（stream）：src方法读入文件产生数据流，dest方法将数据流写入文件，中间是一些中间步骤，每一步都对数据流进行一些处理。</p>
+<h1 id="2-gulp模块的方法"><a href="#2-gulp模块的方法" class="headerlink" title="2 . gulp模块的方法"></a>2 . gulp模块的方法</h1><h2 id="src"><a href="#src" class="headerlink" title="src()"></a>src()</h2><p>gulp模块的src方法，用于产生数据流。它的参数表示所要处理的文件，这些指定的文件会转换成数据流。参数的写法一般有以下几种形式。</p>
+<blockquote>
+<p>js/app.js：指定确切的文件名。</p>
+<p>js/*.js：某个目录所有后缀名为js的文件。</p>
+<p>js/<em>*/</em>.js：某个目录及其所有子目录中的所有后缀名为js的文件。</p>
+<p>!js/app.js：除了js/app.js以外的所有文件。</p>
+<p>*.+(js    css)：匹配项目根目录下，所有后缀名为js或css的文件。</p>
+</blockquote>
+<p>src方法的参数还可以是一个数组，用来指定多个成员。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.src([&apos;js/**/*.js&apos;, &apos;!js/**/*.min.js&apos;])</span><br></pre></td></tr></table></figure>
+<h2 id="dest"><a href="#dest" class="headerlink" title="dest()"></a>dest()</h2><p>dest方法将管道的输出写入文件，同时将这些输出继续输出，所以可以依次调用多次dest方法，将输出写入多个目录。如果有目录不存在，将会被新建。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gulp.src(&apos;./client/templates/*.jade&apos;)</span><br><span class="line">  .pipe(jade())</span><br><span class="line">  .pipe(gulp.dest(&apos;./build/templates&apos;))</span><br><span class="line">  .pipe(minify())</span><br><span class="line">  .pipe(gulp.dest(&apos;./build/minified_templates&apos;));</span><br></pre></td></tr></table></figure>
+<p>dest方法还可以接受第二个参数，表示配置对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gulp.dest(&apos;build&apos;, &#123;</span><br><span class="line">  cwd: &apos;./app&apos;,</span><br><span class="line">  mode: &apos;0644&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>配置对象有两个字段。cwd字段指定写入路径的基准目录，默认是当前目录；mode字段指定写入文件的权限，默认是0777。</p>
+<h2 id="task"><a href="#task" class="headerlink" title="task()"></a>task()</h2><p>task方法用于定义具体的任务。它的第一个参数是任务名，第二个参数是任务函数。下面是一个非常简单的任务函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;greet&apos;, function () &#123;</span><br><span class="line">   console.log(&apos;Hello world!&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>task方法还可以指定按顺序运行的一组任务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;build&apos;, [&apos;css&apos;, &apos;js&apos;, &apos;imgs&apos;]);</span><br></pre></td></tr></table></figure>
+<p>上面代码先指定build任务，它由css、js、imgs三个任务所组成，task方法会并发执行这三个任务。注意，由于每个任务都是异步调用，所以没有办法保证js任务的开始运行的时间，正是css任务运行结束。</p>
+<p>如果希望各个任务严格按次序运行，可以把前一个任务写成后一个任务的依赖模块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;css&apos;, [&apos;greet&apos;], function () &#123;</span><br><span class="line">   // Deal with CSS here</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码表明，css任务依赖greet任务，所以css一定会在greet运行完成后再运行。</p>
+<p>task方法的回调函数，还可以接受一个函数作为参数，这对执行异步任务非常有用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 执行shell命令</span><br><span class="line">var exec = require(&apos;child_process&apos;).exec;</span><br><span class="line">gulp.task(&apos;jekyll&apos;, function(cb) &#123;</span><br><span class="line">  // build Jekyll</span><br><span class="line">  exec(&apos;jekyll build&apos;, function(err) &#123;</span><br><span class="line">    if (err) return cb(err); // return error</span><br><span class="line">    cb(); // finished task</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果一个任务的名字为default，就表明它是“默认任务”，在命令行直接输入gulp命令，就会运行该任务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;, function () &#123;</span><br><span class="line">  // Your default task</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 或者</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;default&apos;, [&apos;styles&apos;, &apos;jshint&apos;, &apos;watch&apos;]);</span><br></pre></td></tr></table></figure>
+<p>执行的时候，直接使用gulp，就会运行styles、jshint、watch三个任务。</p>
+<h2 id="watch"><a href="#watch" class="headerlink" title="watch()"></a>watch()</h2><p>watch方法用于指定需要监视的文件。一旦这些文件发生变动，就运行指定任务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;watch&apos;, function () &#123;</span><br><span class="line">   gulp.watch(&apos;templates/*.tmpl.html&apos;, [&apos;build&apos;]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码指定，一旦templates目录中的模板文件发生变化，就运行build任务。</p>
+<p>watch方法也可以用回调函数，代替指定的任务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.watch(&apos;templates/*.tmpl.html&apos;, function (event) &#123;</span><br><span class="line">   console.log(&apos;Event type: &apos; + event.type);</span><br><span class="line">   console.log(&apos;Event path: &apos; + event.path);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.watch(&apos;js/**/*.js&apos;, function(event) &#123;</span><br><span class="line">  console.log(&apos;File &apos; + event.path + &apos; was &apos; + event.type + &apos;, running tasks...&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>另一种写法是watch方法所监控的文件发生变化时（修改、增加、删除文件），会触发change事件。可以对change事件指定回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var watcher = gulp.watch(&apos;js/**/*.js&apos;, [&apos;uglify&apos;,&apos;reload&apos;]);</span><br><span class="line">watcher.on(&apos;change&apos;, function(event) &#123;</span><br><span class="line">  console.log(&apos;File &apos; + event.path + &apos; was &apos; + event.type + &apos;, running tasks...&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>除了change事件，watch方法还可能触发以下事件。</p>
+<blockquote>
+<p>end：回调函数运行完毕时触发。</p>
+<p>error：发生错误时触发。</p>
+<p>ready：当开始监听文件时触发。</p>
+<p>nomatch：没有匹配的监听文件时触发。</p>
+</blockquote>
+<p>watcher对象还包含其他一些方法。</p>
+<blockquote>
+<p>watcher.end()：停止watcher对象，不会再调用任务或回调函数。</p>
+<p>watcher.files()：返回watcher对象监视的文件。</p>
+<p>watcher.add(glob)：增加所要监视的文件，它还可以附件第二个参数，表示回调函数。</p>
+<p>watcher.remove(filepath)：从watcher对象中移走一个监视的文件</p>
+</blockquote>
+<h1 id="3-模块插件"><a href="#3-模块插件" class="headerlink" title="3 . 模块插件"></a>3 . 模块插件</h1><p><strong>和grunt有相同的地方，就是gulp也有相似的插件对文件进行处理，我们需要哪个插件就将其引入</strong></p>
+<p><strong> 这里是我之前写的测试demo , 这里都是当时的测试代码！记录下 </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;),</span><br><span class="line">    jshint = require(&apos;gulp-jshint&apos;),</span><br><span class="line">    uglify = require(&apos;gulp-uglify&apos;),</span><br><span class="line">    concat = require(&apos;gulp-concat&apos;),</span><br><span class="line">    minifycss = require(&apos;gulp-minify-css&apos;),</span><br><span class="line">    imagemin = require(&apos;gulp-imagemin&apos;),</span><br><span class="line">    cache = require(&apos;gulp-cache&apos;),</span><br><span class="line">    rename = require(&apos;gulp-rename&apos;),</span><br><span class="line">    notify = require(&apos;gulp-notify&apos;),</span><br><span class="line">    minifyHtml = require(&quot;gulp-minify-html&quot;);</span><br><span class="line">    del = require(&apos;del&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gulp.task(&apos;cleanFile&apos;, function(cb) &#123;</span><br><span class="line">    del([&apos;minJS/*&apos;, &apos;minCss/*&apos;], cb)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gulp.task(&apos;minijs&apos;,function () &#123;</span><br><span class="line">   gulp.src(&apos;js/*.js&apos;)</span><br><span class="line">      .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(&apos;minJs&apos;))</span><br><span class="line">      .pipe(notify(&#123; message: &apos;js任务完成&apos; &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;minicss&apos;, function () &#123; </span><br><span class="line">    gulp.src([&apos;css/*.css&apos;])</span><br><span class="line">        .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest(&apos;minCss&apos;))</span><br><span class="line">        .pipe(notify(&#123; message: &apos;CSS任务完成&apos; &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;hebin&apos;,function () &#123;</span><br><span class="line">   gulp.src([&apos;js/*.js&apos;])</span><br><span class="line">   	  .pipe(concat(&apos;main.js&apos;))</span><br><span class="line">   	  .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(&apos;minJs&apos;))</span><br><span class="line">      .pipe(notify(&#123; message: &apos;js任务完成&apos; &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//好奇怪！！！！！对这里的多个文件写法</span><br><span class="line">gulp.task(&apos;accc&apos;,function () &#123;</span><br><span class="line">   gulp.src([&apos;js/a.js&apos;],[&apos;js/c.js&apos;])</span><br><span class="line">      .pipe(concat(&apos;ac.min.js&apos;))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(&apos;minJs&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gulp.task(&apos;haha&apos;, function () &#123;</span><br><span class="line">    gulp.src([&apos;css/*.css&apos;])</span><br><span class="line">        .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest(&apos;haha&apos;))</span><br><span class="line">        .pipe(notify(&#123; message: &apos;CSS任务完成&apos; &#125;));</span><br><span class="line">    gulp.src(&apos;js/*.js&apos;)</span><br><span class="line">      .pipe(rename(&#123;suffix: &apos;.min&apos;&#125;))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(&apos;haha&apos;))</span><br><span class="line">      .pipe(notify(&#123; message: &apos;js任务完成&apos; &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;minihtml&apos;, function () &#123;</span><br><span class="line">    gulp.src(&apos;*.html&apos;) // 要压缩的html文件</span><br><span class="line">    .pipe(minifyHtml()) //压缩</span><br><span class="line">    .pipe(gulp.dest(&apos;html&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gulp.task(&apos;imagemin&apos;,function()&#123;</span><br><span class="line">    // 1. 找到图片</span><br><span class="line">    gulp.src(&apos;images/*.*&apos;)</span><br><span class="line">    // 2. 压缩图片缓存 只有变动的才被压缩</span><br><span class="line">    .pipe(cache(imagemin(&#123; optimizationLevel: 3, progressive: true, interlaced: true &#125;)))</span><br><span class="line">    // 3. 另存图片</span><br><span class="line">    .pipe(gulp.dest(&apos;minImg&apos;))</span><br><span class="line">    .pipe(notify(&#123; message: &apos;Images task complete&apos; &#125;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 在命令行使用 gulp auto 启动此任务</span><br><span class="line">gulp.task(&apos;auto&apos;, function () &#123;</span><br><span class="line">    // 监听文件修改，当文件被修改则执行 images 任务</span><br><span class="line">    gulp.watch(&apos;images/*.*)&apos;, [&apos;imagemin&apos;]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用 gulp.task(&apos;default&apos;) 定义默认任务</span><br><span class="line">// 在命令行使用 gulp 启动 images 任务和 auto 任务</span><br><span class="line">gulp.task(&apos;default&apos;, [&apos;imagemin&apos;, &apos;auto&apos;]);</span><br><span class="line"></span><br><span class="line">// gulp.task(&apos;default&apos;,[&apos;cleanFile&apos;],function () &#123;</span><br><span class="line">//     gulp.start(&apos;minijs&apos;,&apos;minicss&apos;);</span><br><span class="line">// &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="gulp-load-plugins模块"><a href="#gulp-load-plugins模块" class="headerlink" title="gulp-load-plugins模块"></a>gulp-load-plugins模块</h2><p>一般情况下，gulpfile.js中的模块需要一个个加载。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;),</span><br><span class="line">    jshint = require(&apos;gulp-jshint&apos;),</span><br><span class="line">    uglify = require(&apos;gulp-uglify&apos;),</span><br><span class="line">    concat = require(&apos;gulp-concat&apos;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;js&apos;, function () &#123;</span><br><span class="line">   return gulp.src(&apos;js/*.js&apos;)</span><br><span class="line">      .pipe(jshint())</span><br><span class="line">      .pipe(jshint.reporter(&apos;default&apos;))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(concat(&apos;app.js&apos;))</span><br><span class="line">      .pipe(gulp.dest(&apos;build&apos;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，除了gulp模块以外，还加载其他很多个模块。</p>
+<p>这种一一加载的写法，<strong> 比较麻烦。 </strong></p>
+<p><strong> 使用gulp-load-plugins模块，可以加载package.json文件中所有的gulp模块。上面的代码用gulp-load-plugins模块改写，就是下面这样。 </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;),</span><br><span class="line">    gulpLoadPlugins = require(&apos;gulp-load-plugins&apos;),</span><br><span class="line">    plugins = gulpLoadPlugins();</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;js&apos;, function () &#123;</span><br><span class="line">   return gulp.src(&apos;js/*.js&apos;)</span><br><span class="line">      .pipe(plugins.jshint())</span><br><span class="line">      .pipe(plugins.jshint.reporter(&apos;default&apos;))</span><br><span class="line">      .pipe(plugins.uglify())</span><br><span class="line">      .pipe(plugins.concat(&apos;app.js&apos;))</span><br><span class="line">      .pipe(gulp.dest(&apos;build&apos;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码假设package.json文件包含以下内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;devDependencies&quot;: &#123;</span><br><span class="line">      &quot;gulp-concat&quot;: &quot;~2.2.0&quot;,</span><br><span class="line">      &quot;gulp-uglify&quot;: &quot;~0.2.1&quot;,</span><br><span class="line">      &quot;gulp-jshint&quot;: &quot;~1.5.1&quot;,</span><br><span class="line">      &quot;gulp&quot;: &quot;~3.5.6&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="gulp-livereload模块"><a href="#gulp-livereload模块" class="headerlink" title="gulp-livereload模块"></a>gulp-livereload模块</h2><p>gulp-livereload模块用于自动刷新浏览器，反映出源码的最新变化。它除了模块以外，还需要在浏览器中安装插件，用来配合源码变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&apos;gulp&apos;),</span><br><span class="line">    less = require(&apos;gulp-less&apos;),</span><br><span class="line">    livereload = require(&apos;gulp-livereload&apos;),</span><br><span class="line">    watch = require(&apos;gulp-watch&apos;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;less&apos;, function() &#123;</span><br><span class="line">   gulp.src(&apos;less/*.less&apos;)</span><br><span class="line">      .pipe(watch())</span><br><span class="line">      .pipe(less())</span><br><span class="line">      .pipe(gulp.dest(&apos;css&apos;))</span><br><span class="line">      .pipe(livereload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码监视less文件，一旦编译完成，就自动刷新浏览器。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/tools/">tools</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-socket" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1131,81 +1275,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/trouble/">trouble</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-basefunction" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/18/basefunction/" class="article-date">
-  	<time datetime="2016-03-18T07:11:23.215Z" itemprop="datePublished">2016-03-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/18/basefunction/">原生JavaScript基础方法(未完成……)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p> 记录一些简单的基础JavaScript方法</p>
-</blockquote>
-<h3 id="原生JavaScript判断数组"><a href="#原生JavaScript判断数组" class="headerlink" title="原生JavaScript判断数组"></a>原生JavaScript判断数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isArray (arr)&#123;</span><br><span class="line">	return Object.prototype.toString.call(arr) == &quot;[object Array]&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="js数组排序sort-方法"><a href="#js数组排序sort-方法" class="headerlink" title="js数组排序sort()方法"></a>js数组排序sort()方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//这里我们需要注意，JavaScript数组sort 是按字符编码进行排序的</span><br><span class="line"></span><br><span class="line">arr.sort(function(a,b)&#123;return a&gt;b&#125;);//从小到大排序</span><br><span class="line">arr.sort(function(a,b)&#123;return a&lt;b&#125;);//从大到小排序</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript实现字符串长度截取"><a href="#原生JavaScript实现字符串长度截取" class="headerlink" title="原生JavaScript实现字符串长度截取"></a>原生JavaScript实现字符串长度截取</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function cutstr(str, len) &#123; </span><br><span class="line">    var temp; </span><br><span class="line">    var icount = 0; </span><br><span class="line">    var patrn = /[^\x00-\xff]/; </span><br><span class="line">    var strre = &quot;&quot;; </span><br><span class="line">    for (var i = 0; i &lt; str.length; i++) &#123; </span><br><span class="line">        if (icount &lt; len - 1) &#123; </span><br><span class="line">            temp = str.substr(i, 1); </span><br><span class="line">            if (patrn.exec(temp) == null) &#123; </span><br><span class="line">                icount = icount + 1 </span><br><span class="line">            &#125; else &#123; </span><br><span class="line">                icount = icount + 2 </span><br><span class="line">            &#125; </span><br><span class="line">            strre += temp </span><br><span class="line">        &#125; else &#123; </span><br><span class="line">            break </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    return strre + &quot;...&quot; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript获取域名主机"><a href="#原生JavaScript获取域名主机" class="headerlink" title="原生JavaScript获取域名主机"></a>原生JavaScript获取域名主机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function getHost(url) &#123; </span><br><span class="line">    var host = &quot;null&quot;; </span><br><span class="line">    if(typeof url == &quot;undefined&quot;|| null == url) &#123; </span><br><span class="line">        url = window.location.href; </span><br><span class="line">    &#125; </span><br><span class="line">    var regex = /^\w+\:\/\/([^\/]*).*/; </span><br><span class="line">    var match = url.match(regex); </span><br><span class="line">    if(typeof match != &quot;undefined&quot; &amp;&amp; null != match) &#123; </span><br><span class="line">        host = match[1]; </span><br><span class="line">    &#125; </span><br><span class="line">    return host; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript清除空格"><a href="#原生JavaScript清除空格" class="headerlink" title="原生JavaScript清除空格"></a>原生JavaScript清除空格</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String.prototype.trim = function() &#123; </span><br><span class="line">    var reExtraSpace = /^\s*(.*?)\s+$/; </span><br><span class="line">    return this.replace(reExtraSpace, &quot;$1&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript替换全部"><a href="#原生JavaScript替换全部" class="headerlink" title="原生JavaScript替换全部"></a>原生JavaScript替换全部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String.prototype.replaceAll = function(s1, s2) &#123; </span><br><span class="line">    return this.replace(new RegExp(s1, &quot;gm&quot;), s2) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript转义html标签"><a href="#原生JavaScript转义html标签" class="headerlink" title="原生JavaScript转义html标签"></a>原生JavaScript转义html标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function HtmlEncode(text) &#123;</span><br><span class="line">    return text.replace(/&amp;/g, &apos;&amp;amp&apos;).replace(/\&quot;/g, &apos;&amp;quot;&apos;).replace(/&lt;/g, &apos;&amp;lt;&apos;).replace(/&gt;/g, &apos;&amp;gt;&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript还原html标签"><a href="#原生JavaScript还原html标签" class="headerlink" title="原生JavaScript还原html标签"></a>原生JavaScript还原html标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function HtmlDecode(text) &#123;</span><br><span class="line">    return text.replace(/&amp;amp;/g, &apos;&amp;&apos;).replace(/&amp;quot;/g, &apos;\&quot;&apos;).replace(/&amp;lt;/g, &apos;&lt;&apos;).replace(/&amp;gt;/g, &apos;&gt;&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript判断是否为数字类型"><a href="#原生JavaScript判断是否为数字类型" class="headerlink" title="原生JavaScript判断是否为数字类型"></a>原生JavaScript判断是否为数字类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function isDigit(value) &#123; </span><br><span class="line">    var patrn = /^[0-9]*$/; </span><br><span class="line">    if (patrn.exec(value) == null || value == &quot;&quot;) &#123; </span><br><span class="line">        return false </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">        return true </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript设置cookie值"><a href="#原生JavaScript设置cookie值" class="headerlink" title="原生JavaScript设置cookie值"></a>原生JavaScript设置cookie值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function setCookie(name, value, Hours) &#123; </span><br><span class="line">    var d = new Date(); </span><br><span class="line">    var offset = 8; </span><br><span class="line">    var utc = d.getTime() + (d.getTimezoneOffset() * 60000); </span><br><span class="line">    var nd = utc + (3600000 * offset); </span><br><span class="line">    var exp = new Date(nd); </span><br><span class="line">    exp.setTime(exp.getTime() + Hours * 60 * 60 * 1000); </span><br><span class="line">    document.cookie = name + &quot;=&quot; + escape(value) + &quot;;path=/;expires=&quot; + exp.toGMTString() + &quot;;domain=360doc.com;&quot; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript获取cookie值"><a href="#原生JavaScript获取cookie值" class="headerlink" title="原生JavaScript获取cookie值"></a>原生JavaScript获取cookie值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function getCookie(name) &#123; </span><br><span class="line">    var arr = document.cookie.match(new RegExp(&quot;(^| )&quot; + name + &quot;=([^;]*)(;|$)&quot;)); </span><br><span class="line">    if (arr != null) return unescape(arr[2]); </span><br><span class="line">    return null</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript加入收藏夹"><a href="#原生JavaScript加入收藏夹" class="headerlink" title="原生JavaScript加入收藏夹"></a>原生JavaScript加入收藏夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function AddFavorite(sURL, sTitle) &#123; </span><br><span class="line">    try &#123; </span><br><span class="line">        window.external.addFavorite(sURL, sTitle) </span><br><span class="line">    &#125; catch(e) &#123; </span><br><span class="line">        try &#123; </span><br><span class="line">            window.sidebar.addPanel(sTitle, sURL, &quot;&quot;) </span><br><span class="line">        &#125; catch(e) &#123; </span><br><span class="line">            alert(&quot;加入收藏失败，请使用Ctrl+D进行添加&quot;) </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原生JavaScript元素显示的通用方法"><a href="#原生JavaScript元素显示的通用方法" class="headerlink" title="原生JavaScript元素显示的通用方法"></a>原生JavaScript元素显示的通用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function $(id) &#123; </span><br><span class="line">        return !id ? null : document.getElementById(id); &#125; function display(id) &#123; </span><br><span class="line">        var obj = $(id); </span><br><span class="line">        if(obj.style.visibility) &#123; </span><br><span class="line">                obj.style.visibility = obj.style.visibility == &apos;visible&apos; ? &apos;hidden&apos; : &apos;visible&apos;; </span><br><span class="line">        &#125; else &#123; </span><br><span class="line">                obj.style.display = obj.style.display == &apos;&apos; ? &apos;none&apos; : &apos;&apos;; </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/base/">base</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 	</div>
 
 
