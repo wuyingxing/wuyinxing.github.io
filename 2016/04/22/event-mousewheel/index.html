@@ -4,27 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Nodejs中对函数有趣用法 | 摘星弄月</title>
+  <title>浅谈 Mousewheel 事件 | 摘星弄月</title>
 
-  <meta name="keywords" content="Nodejs中对函数有趣用法 ">
+  <meta name="keywords" content="浅谈 Mousewheel 事件 ">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
-Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：
-123456789function say(word) &amp;#123;  console.log(word);&amp;#125;function execute(someFunction,">
+  <meta name="description" content="Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。不知道为何在该问题上其他厂商和微软的如此一致。Firefox可以使用addEventListener方法绑定DomMouseScroll事件。
+12345678910111213141516171819202122">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nodejs中对函数有趣用法">
-<meta property="og:url" content="http://yoursite.com/2016/03/21/node-function/index.html">
+<meta property="og:title" content="浅谈 Mousewheel 事件">
+<meta property="og:url" content="http://yoursite.com/2016/04/22/event-mousewheel/index.html">
 <meta property="og:site_name" content="摘星弄月">
-<meta property="og:description" content="在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
-Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：
-123456789function say(word) &amp;#123;  console.log(word);&amp;#125;function execute(someFunction,">
-<meta property="og:updated_time" content="2016-03-21T09:02:54.626Z">
+<meta property="og:description" content="Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。不知道为何在该问题上其他厂商和微软的如此一致。Firefox可以使用addEventListener方法绑定DomMouseScroll事件。
+12345678910111213141516171819202122">
+<meta property="og:updated_time" content="2016-04-22T02:11:41.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nodejs中对函数有趣用法">
-<meta name="twitter:description" content="在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
-Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：
-123456789function say(word) &amp;#123;  console.log(word);&amp;#125;function execute(someFunction,">
+<meta name="twitter:title" content="浅谈 Mousewheel 事件">
+<meta name="twitter:description" content="Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。不知道为何在该问题上其他厂商和微软的如此一致。Firefox可以使用addEventListener方法绑定DomMouseScroll事件。
+12345678910111213141516171819202122">
   
     <link rel="alternative" href="/atom.xml" title="摘星弄月" type="application/atom+xml">
   
@@ -172,11 +169,11 @@ Node.js中函数的使用与Javascript类似，举例来说，你可以这样做
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-node-function" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-event-mousewheel" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/21/node-function/" class="article-date">
-  	<time datetime="2016-03-21T08:52:09.725Z" itemprop="datePublished">2016-03-21</time>
+      <a href="/2016/04/22/event-mousewheel/" class="article-date">
+  	<time datetime="2016-04-22T01:40:54.944Z" itemprop="datePublished">2016-04-22</time>
 </a>
     </div>
   
@@ -189,7 +186,7 @@ Node.js中函数的使用与Javascript类似，举例来说，你可以这样做
         
   
     <h1 class="article-title" itemprop="name">
-      Nodejs中对函数有趣用法
+      浅谈 Mousewheel 事件
     </h1>
   
 
@@ -198,12 +195,12 @@ Node.js中函数的使用与Javascript类似，举例来说，你可以这样做
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Node/">Node</a>
+	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 	</div>
 
 
@@ -213,15 +210,13 @@ Node.js中函数的使用与Javascript类似，举例来说，你可以这样做
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。</p>
-<p>Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function say(word) &#123;</span><br><span class="line">  console.log(word);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function execute(someFunction, value) &#123;</span><br><span class="line">  someFunction(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">execute(say, &quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
-<p>以上代码中，我们把 say 函数作为execute函数的第一个变量进行了传递。这里返回的不是 say 的返回值，而是 say 本身！<br>这样一来， say 就变成了execute 中的本地变量 someFunction ，execute可以通过调用 someFunction() （带括号的形式）来使用 say 函数。<br>当然，因为 say 有一个变量， execute 在调用 someFunction 时可以传递这样一个变量。</p>
-<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>我们可以把一个函数作为变量传递。但是我们不一定要绕这个”先定义，再传递”的圈子，我们可以直接在另一个函数的括号中定义和传递这个函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function execute(someFunction, value) &#123;</span><br><span class="line">  someFunction(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">execute(function(word)&#123; console.log(word) &#125;, &quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
-<p>我们在 execute 接受第一个参数的地方直接定义了我们准备传递给 execute 的函数。<br>用这种方式，我们甚至不用给这个函数起名字，这也是为什么它被叫做匿名函数 。</p>
+        <p>Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。<br>滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。<br>不知道为何在该问题上其他厂商和微软的如此一致。Firefox可以使用addEventListener方法绑定DomMouseScroll事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    // &lt;![CDATA[</span><br><span class="line">    var mouseWheel = document.getElementById(&apos;mouseWheel&apos;);</span><br><span class="line">     </span><br><span class="line">    if (mouseWheel.addEventListener) &#123;</span><br><span class="line">         </span><br><span class="line">        mouseWheel.addEventListener(&apos;DOMMouseScroll&apos;, function(event) &#123;</span><br><span class="line">             </span><br><span class="line">            event.target.innerHTML = event.detail;</span><br><span class="line">            event.stopPropagation();</span><br><span class="line">            event.preventDefault();</span><br><span class="line">             </span><br><span class="line">        &#125;, false);</span><br><span class="line">    &#125;</span><br><span class="line">    mouseWheel.onmousewheel = function(event) &#123;</span><br><span class="line">         </span><br><span class="line">        event = event || window.event;</span><br><span class="line">        mouseWheel.innerHTML = event.wheelDelta;</span><br><span class="line">        event.returnValue = false;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">    // ]]&gt;</span><br><span class="line">    Firefox</span><br><span class="line">    鼠标滚轮向上滚动是-3，向下滚动是3</span><br><span class="line"></span><br><span class="line">    IE</span><br><span class="line">    鼠标滚轮向上滚动是120，向下滚动是-120</span><br><span class="line"></span><br><span class="line">    Safari</span><br><span class="line">    鼠标滚轮向上滚动是360，向下滚动是-360</span><br><span class="line"></span><br><span class="line">    Opera</span><br><span class="line">    鼠标滚轮向上滚动是120，向下滚动是-120</span><br><span class="line"></span><br><span class="line">    Chrome</span><br><span class="line">    鼠标滚轮向上滚动是120，向下滚动是-120</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="模拟触发滚轮事件-并对返回值操作："><a href="#模拟触发滚轮事件-并对返回值操作：" class="headerlink" title="模拟触发滚轮事件 , 并对返回值操作："></a>模拟触发滚轮事件 , 并对返回值操作：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(div).onmousewheel(function(e)&#123;</span><br><span class="line">        var e = window.event || e;</span><br><span class="line">        e.wheelDelta = e.wheelDelta  ± 3 ;</span><br><span class="line">&#125;)；</span><br><span class="line"></span><br><span class="line">$(div).trigger(&apos;mousewheel&apos;);</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p> 在Node js中存在很多这种有意思写法</p>
+<p> “mousewheel” 事件中的 “event.wheelDelta” 属性值：返回的值，如果是正值说明滚轮是向上滚动，如果是负值说明滚轮是向下滚动；返回的值，均为 120 的倍数，即：幅度大小 = 返回的值 / 120。</p>
+<p> “DOMMouseScroll” 事件中的 “event.detail” 属性值：返回的值，如果是负值说明滚轮是向上滚动（与 “event.wheelDelta” 正好相反），如果是正值说明滚轮是向下滚动；返回的值，均为 3 的倍数，即：幅度大小 = 返回的值 / 3。</p>
+<p> “mousewheel” 事件在 Opera 10+ 中却是个特例，既有 “event.wheelDelta” 属性，也有 “event.detail” 属性。</p>
 </blockquote>
 
       
@@ -232,18 +227,9 @@ Node.js中函数的使用与Javascript类似，举例来说，你可以这样做
     
 <nav id="article-nav">
   
-    <a href="/2016/03/28/meta/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          HTML中的meta标签
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/21/jQuery-extends/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jQuery.extend 和 jQuery.fn.extend</div>
+    <a href="/2016/04/13/gulp-tools/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gulp 任务管理工具</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -278,7 +264,7 @@ Node.js中函数的使用与Javascript类似，举例来说，你可以这样做
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="node-function" data-title="Nodejs中对函数有趣用法" data-url="http://yoursite.com/2016/03/21/node-function/"></div>
+	<div class="ds-thread" data-thread-key="event-mousewheel" data-title="浅谈 Mousewheel 事件" data-url="http://yoursite.com/2016/04/22/event-mousewheel/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

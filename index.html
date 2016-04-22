@@ -105,7 +105,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 15px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/API/" style="font-size: 15px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -166,6 +166,74 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-event-mousewheel" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/22/event-mousewheel/" class="article-date">
+  	<time datetime="2016-04-22T01:40:54.944Z" itemprop="datePublished">2016-04-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/22/event-mousewheel/">浅谈 Mousewheel 事件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。<br>滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。<br>不知道为何在该问题上其他厂商和微软的如此一致。Firefox可以使用addEventListener方法绑定DomMouseScroll事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    // &lt;![CDATA[</span><br><span class="line">    var mouseWheel = document.getElementById(&apos;mouseWheel&apos;);</span><br><span class="line">     </span><br><span class="line">    if (mouseWheel.addEventListener) &#123;</span><br><span class="line">         </span><br><span class="line">        mouseWheel.addEventListener(&apos;DOMMouseScroll&apos;, function(event) &#123;</span><br><span class="line">             </span><br><span class="line">            event.target.innerHTML = event.detail;</span><br><span class="line">            event.stopPropagation();</span><br><span class="line">            event.preventDefault();</span><br><span class="line">             </span><br><span class="line">        &#125;, false);</span><br><span class="line">    &#125;</span><br><span class="line">    mouseWheel.onmousewheel = function(event) &#123;</span><br><span class="line">         </span><br><span class="line">        event = event || window.event;</span><br><span class="line">        mouseWheel.innerHTML = event.wheelDelta;</span><br><span class="line">        event.returnValue = false;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">    // ]]&gt;</span><br><span class="line">    Firefox</span><br><span class="line">    鼠标滚轮向上滚动是-3，向下滚动是3</span><br><span class="line"></span><br><span class="line">    IE</span><br><span class="line">    鼠标滚轮向上滚动是120，向下滚动是-120</span><br><span class="line"></span><br><span class="line">    Safari</span><br><span class="line">    鼠标滚轮向上滚动是360，向下滚动是-360</span><br><span class="line"></span><br><span class="line">    Opera</span><br><span class="line">    鼠标滚轮向上滚动是120，向下滚动是-120</span><br><span class="line"></span><br><span class="line">    Chrome</span><br><span class="line">    鼠标滚轮向上滚动是120，向下滚动是-120</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="模拟触发滚轮事件-并对返回值操作："><a href="#模拟触发滚轮事件-并对返回值操作：" class="headerlink" title="模拟触发滚轮事件 , 并对返回值操作："></a>模拟触发滚轮事件 , 并对返回值操作：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(div).onmousewheel(function(e)&#123;</span><br><span class="line">        var e = window.event || e;</span><br><span class="line">        e.wheelDelta = e.wheelDelta  ± 3 ;</span><br><span class="line">&#125;)；</span><br><span class="line"></span><br><span class="line">$(div).trigger(&apos;mousewheel&apos;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> “mousewheel” 事件中的 “event.wheelDelta” 属性值：返回的值，如果是正值说明滚轮是向上滚动，如果是负值说明滚轮是向下滚动；返回的值，均为 120 的倍数，即：幅度大小 = 返回的值 / 120。</p>
+<p> “DOMMouseScroll” 事件中的 “event.detail” 属性值：返回的值，如果是负值说明滚轮是向上滚动（与 “event.wheelDelta” 正好相反），如果是正值说明滚轮是向下滚动；返回的值，均为 3 的倍数，即：幅度大小 = 返回的值 / 3。</p>
+<p> “mousewheel” 事件在 Opera 10+ 中却是个特例，既有 “event.wheelDelta” 属性，也有 “event.detail” 属性。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-gulp-tools" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1209,72 +1277,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-windowOpen" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/18/windowOpen/" class="article-date">
-  	<time datetime="2016-03-18T08:31:02.228Z" itemprop="datePublished">2016-03-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/18/windowOpen/">window.open不被拦截的解决方法之一</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在处理页面ajax请求过程中，想实现请求后打开新页面，就想到通过 window.open 来实现，但是最终都被浏览器拦截了。</p>
-<p>在谷歌搜索有没有解决方法，有些说可以通过新建a标签，模拟点击来实现，但是测试发现都实现不了，照样被浏览器拦截。</p>
-<p>最后找到了一个折中的办法，可以实现新页面打开，但是没有a标签的那种直接流量新页面的效果。</p>
-<p>当然这只是解决方法之一</p>
-</blockquote>
-<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$obj.click(function()&#123;</span><br><span class="line">	var newTab=window.open(&apos;about:blank&apos;);</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">		success:function(data)&#123;</span><br><span class="line">			if(data)&#123;</span><br><span class="line">			    //window.open(&apos;http://www.baidu.com&apos;);</span><br><span class="line">			    newTab.location.href=&quot;http://www.baidu.com&quot;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/window/">window</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/trouble/">trouble</a>
 	</div>
 
 
