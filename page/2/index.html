@@ -105,7 +105,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 15px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/API/" style="font-size: 15px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/mobileWeb/" style="font-size: 20px;">mobileWeb</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -166,6 +166,86 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-jQuery-chained" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/18/jQuery-chained/" class="article-date">
+  	<time datetime="2016-03-18T11:48:13.867Z" itemprop="datePublished">2016-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/jQuery-chained/">jQuery的链式调用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 阅读本文前，请阅读  <a href="/2016/03/18/jQuery-globle">jQuery整体架构的无new构建</a></p>
+</blockquote>
+<p>DOM链式调用的处理：</p>
+<ol>
+<li><p>节约JS代码.</p>
+</li>
+<li><p>所返回的都是同一个对象，可以提高代码的效率</p>
+</li>
+</ol>
+<p>通过简单扩展原型方法并通过return this的形式来实现跨浏览器的链式调用。</p>
+<p>利用JS下的简单工厂模式，来将所有对于同一个DOM对象的操作指定同一个实例。</p>
+<p>这个原理就超简单了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aQuery().init().name()</span><br><span class="line"></span><br><span class="line">分解</span><br><span class="line">a = aQuery();</span><br><span class="line">a.init()</span><br><span class="line">a.name()</span><br></pre></td></tr></table></figure>
+<p>把代码分解一下，很明显实现链式的基本条件就是实例this的存在，并且是同一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">aQuery.prototype = &#123;</span><br><span class="line">    init: function() &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;,</span><br><span class="line">    name: function() &#123;</span><br><span class="line">        return this</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>所以我们在需要链式的方法访问this就可以了，因为返回当前实例的this,从而又可以访问自己的原型了</p>
+<blockquote>
+<p>优点：节省代码量，提高代码的效率，代码看起来更优雅</p>
+<p>最糟糕的是所有对象的方法返回的都是对象本身，也就是说没有返回值，这不一定在任何环境下都适合。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-jQuery-globle" class="article article-type-post" itemscope itemprop="blogPost">
   
