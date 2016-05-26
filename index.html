@@ -184,7 +184,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/25/require-1/">Javascript模块化编程 —— require</a>
+      <a class="article-title" href="/2016/05/25/require-1/">Javascript模块化编程 — RequireJS</a>
     </h1>
   
 
@@ -196,7 +196,7 @@
         <p>RequireJS是一个工具库，主要用于客户端的模块管理。它可以让客户端的代码分成一个个模块，实现异步或动态加载，从而提高代码的性能和可维护性。它的模块管理遵守AMD规范（Asynchronous Module Definition）。</p>
 <p>RequireJS的基本思想是，通过define方法，将代码定义为模块；通过require方法，实现代码的模块加载。</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>入门时，我们所有Javascript代码都写在一个文件里面，只要加载这一个文件就够了。慢慢的，代码越来越多，一个文件不够了，必须分成多个文件，依次加载。就形成了下面的结构模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 　&lt;script src=&quot;aa.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">　　&lt;script src=&quot;bb.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">　　&lt;script src=&quot;cc.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">　　&lt;script src=&quot;dd.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">　　&lt;script src=&quot;ee.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">　　&lt;script src=&quot;ff.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  　&lt;script src=&quot;aa.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;bb.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;cc.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;dd.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;ee.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;ff.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
 <p>这样的写法有很大的缺点。首先，加载的时候，浏览器会停止网页渲染，加载文件越多，网页失去响应的时间就会越长；其次，由于js文件之间存在依赖关系，因此必须严格保证加载顺序（比如上例的aa.js要在bb.js的前面），依赖性最大的模块一定要放到最后加载，当依赖关系很复杂的时候，代码的编写和维护都会变得困难。</p>
 <p><strong>require.js的诞生，就是为了解决这两个问题：</strong></p>
 <blockquote>
