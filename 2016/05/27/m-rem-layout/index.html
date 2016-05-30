@@ -20,14 +20,14 @@ rem简介rem  是CSS3新引进来的一个度量单位，大家心里肯定会�
 首先我们来谈谈什么是rem
 rem简介rem  是CSS3新引进来的一个度量单位，大家心里肯定会觉得心灰意冷呀，担心浏览器的支持情况。其实大家不用害怕，你可能会惊讶，支持的浏览器还是蛮多的，比如：M">
 <meta property="og:image" content="http://yoursite.com/images/rem/wy-1.png">
-<meta property="og:image" content="http://yoursite.com/source/themes/rem/wy-2.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-2.png">
 <meta property="og:image" content="http://yoursite.com/images/rem/height.png">
 <meta property="og:image" content="http://yoursite.com/images/rem/wy-3.png">
 <meta property="og:image" content="http://yoursite.com/images/rem/wy-4.png">
 <meta property="og:image" content="http://yoursite.com/images/rem/wy-5.png">
 <meta property="og:image" content="http://yoursite.com/images/rem/wy-6.png">
 <meta property="og:image" content="http://yoursite.com/images/rem/wy-7.png">
-<meta property="og:updated_time" content="2016-05-30T02:45:04.790Z">
+<meta property="og:updated_time" content="2016-05-30T02:49:10.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rem布局移动端自适应页面">
 <meta name="twitter:description" content="前言做了很多移动端web项目，在网页在适应上走了很多弯曲的道路，刚开始采用的是大众点评似的布局，百分比布局当然也用到了所谓的弹性布局flex，有天朋友给我推荐 rem布局，也慢慢开启的对rem的探索！
@@ -244,7 +244,7 @@ rem简介rem  是CSS3新引进来的一个度量单位，大家心里肯定会�
 <p>（3）设计稿都是以分辨率来标明尺寸的，前端在根据设计稿里各个元素的像素尺寸转换为rem时，该以哪个font-size为准呢？这需要去写才能知道。<br>正是因为以上提到的一些不足，我觉得这种适配方式不是特别好，写起来太麻烦。为了完成工作，我们需要找寻更简单更有效率的方法。那么html5该如何去做众多移动设备的适配呢？</p>
 <p><strong>网易的做法</strong></p>
 <p>先来看看网易在不同分辨率下，呈现的效果：</p>
-<p><img src="/images/rem/wy-1.png" alt=""> <img src="source/themes/rem/wy-2.png" alt=""></p>
+<p><img src="/images/rem/wy-1.png" alt=""> <img src="/images/rem/wy-2.png" alt=""></p>
 <p>从这两张图片可以看出，随着分辨率的增大，页面的效果会发生明显变化，主要体现在各个元素的宽高与间距。375<em>680的比320</em>680的导航栏明显要高。能够达到这种效果的根本原因就是因为网易页面里除了font-size之外的其它css尺寸都使用了rem作为单位，比如你看导航栏的高度设置代码:</p>
 <p><img src="/images/rem/height.png" alt=""></p>
 <p>使用rem布局结合在html上根据不同分辨率设置不同font-size有很多不好解决的麻烦，网易是如何解决的呢？ </p>

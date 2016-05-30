@@ -215,7 +215,7 @@
 <p>（3）设计稿都是以分辨率来标明尺寸的，前端在根据设计稿里各个元素的像素尺寸转换为rem时，该以哪个font-size为准呢？这需要去写才能知道。<br>正是因为以上提到的一些不足，我觉得这种适配方式不是特别好，写起来太麻烦。为了完成工作，我们需要找寻更简单更有效率的方法。那么html5该如何去做众多移动设备的适配呢？</p>
 <p><strong>网易的做法</strong></p>
 <p>先来看看网易在不同分辨率下，呈现的效果：</p>
-<p><img src="/images/rem/wy-1.png" alt=""> <img src="source/themes/rem/wy-2.png" alt=""></p>
+<p><img src="/images/rem/wy-1.png" alt=""> <img src="/images/rem/wy-2.png" alt=""></p>
 <p>从这两张图片可以看出，随着分辨率的增大，页面的效果会发生明显变化，主要体现在各个元素的宽高与间距。375<em>680的比320</em>680的导航栏明显要高。能够达到这种效果的根本原因就是因为网易页面里除了font-size之外的其它css尺寸都使用了rem作为单位，比如你看导航栏的高度设置代码:</p>
 <p><img src="/images/rem/height.png" alt=""></p>
 <p>使用rem布局结合在html上根据不同分辨率设置不同font-size有很多不好解决的麻烦，网易是如何解决的呢？ </p>
