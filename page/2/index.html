@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>摘星弄月</title>
+  <title>Hexo</title>
 
   <meta name="keywords" content=" web前端，移动web，web问题，HTML，HTML5，JavaScript，css3 ">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个记录个人学习的博客">
+  <meta name="description">
 <meta property="og:type" content="website">
-<meta property="og:title" content="摘星弄月">
+<meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="摘星弄月">
-<meta property="og:description" content="一个记录个人学习的博客">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="摘星弄月">
-<meta name="twitter:description" content="一个记录个人学习的博客">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
   
-    <link rel="alternative" href="/atom.xml" title="摘星弄月" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,11 +40,9 @@
 		</a>
 
 		<hgroup>
-		  <h1 class="header-author"><a href="/">吴银星</a></h1>
+		  <h1 class="header-author"><a href="/">wuyinxing</a></h1>
 		</hgroup>
 
-		
-		<p class="header-subtitle">天行健，君子以自强不息</p>
 		
 
 		
@@ -105,7 +103,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 15px;">scroll</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -123,7 +121,7 @@
       <nav id="mobile-nav">
   	<div class="overlay">
   		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">吴银星</h1>
+  		<h1 class="header-author js-mobile-header hide">wuyinxing</h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -133,10 +131,8 @@
 			
 			</div>
 			<hgroup>
-			  <h1 class="header-author">吴银星</h1>
+			  <h1 class="header-author">wuyinxing</h1>
 			</hgroup>
-			
-			<p class="header-subtitle">天行健，君子以自强不息</p>
 			
 			<nav class="header-menu">
 				<ul>
@@ -166,6 +162,210 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-m-webbug-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/29/m-webbug-3/" class="article-date">
+  	<time datetime="2016-03-29T11:21:40.796Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/m-webbug-3/">Android手机浏览器overflow是scroll失效</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 在一个微信web项目中，发现Android手机浏览器中 overflow : scroll 失效</p>
+<p> Android低版本中 QQ X5浏览器 对div的 overflow支持很差，只能用body和html。</p>
+<p> 在4.0以上的浏览器中不能存在两个overflow是scroll的div，即：嵌套的overflow : scroll，第二个一定失效</p>
+<p> 第一种办法就是 : 在需要scroll时候，尽量保证当前页面只有一个overflow : scroll 作用于页面</p>
+<p> 第二种办法就是 : 采用iScroll插件（早期用过iScroll4，对于现在的iScroll5不怎么了解,还需要注意的是iscroll是存在BUG的）</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scroll/">scroll</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/mobileWeb/">mobileWeb</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-m-webbug-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/29/m-webbug-2/" class="article-date">
+  	<time datetime="2016-03-29T01:28:25.694Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/29/m-webbug-2/">移动web开发中的全局设置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    font-family: &quot;Helvetica Neue&quot;, Helvetica, STHeiTi, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="设置全局的CSS样式"><a href="#设置全局的CSS样式" class="headerlink" title="设置全局的CSS样式"></a>设置全局的CSS样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">a, img &#123;</span><br><span class="line">    -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html, body , .xxx &#123;</span><br><span class="line">    -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */</span><br><span class="line">    user-select: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html, a, .xxx &#123;</span><br><span class="line">    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  /* 移动端a标签 取消touch高亮效果 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img &#123;</span><br><span class="line">    -webkit-touch-callout: none;   /* 何禁止保存或拷贝图像(该方法只在 iOS 上有效。) */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.xxx &#123;</span><br><span class="line">    overflow: auto; /* auto | scroll */</span><br><span class="line">    -webkit-overflow-scrolling: touch;     /* 加速滚动，这个属性存在一定的兼容性 */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">    -webkit-text-size-adjust: 100%;  /* 禁止文本缩放 当移动设备横竖屏切换时，文本的大小会重新计算，进行相应的缩放，当我们不需要这种情况时，可以选择禁止 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="邮箱设置"><a href="#邮箱设置" class="headerlink" title="邮箱设置"></a>邮箱设置</h2><blockquote>
+<p>在 Android （iOS不会）上，浏览器会自动识别看起来像邮箱地址的字符串，不论有你没有加上邮箱链接，当你在这个字符串上长按，会弹出发邮件的提示。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot; /&gt;   //关闭邮箱地址识别</span><br><span class="line"></span><br><span class="line">&lt;a mailto:&quot;dooyoe@gmail.com&quot;&gt;dooyoe@gmail.com&lt;/a&gt; //  开启邮件发送</span><br></pre></td></tr></table></figure>
+<h2 id="移动端手机号码设置"><a href="#移动端手机号码设置" class="headerlink" title="移动端手机号码设置"></a>移动端手机号码设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt; //关闭电话识别 （iOS（其他浏览器和Android均不会）上会对看起来像是电话号码的数字处理为电话链接）</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;tel:123456&quot;&gt;123456&lt;/a&gt;  //开启电话功能</span><br><span class="line"></span><br><span class="line">&lt;a href=&quot;sms:123456&quot;&gt;123456&lt;/a&gt; // 开启短信功能</span><br></pre></td></tr></table></figure>
+<h2 id="屏幕设置"><a href="#屏幕设置" class="headerlink" title="屏幕设置"></a>屏幕设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot; name=&quot;viewport&quot;&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> width                      – viewport的宽度<br> height                     – viewport的高度<br> initial-scale          – 初始的缩放比例<br> minimum-scale  – 允许用户缩放到的最小比例<br> maximum-scale – 允许用户缩放到的最大比例<br> user-scalable       – 用户是否可以手动缩放</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- IOS中Safari允许全屏浏览 --&gt;</span><br><span class="line">&lt;meta content=&quot;yes&quot; name=&quot;apple-mobile-web-app-capable&quot;&gt;  </span><br><span class="line"></span><br><span class="line">&lt;!-- IOS中Safari顶端状态条样式 --&gt;</span><br><span class="line">&lt;meta content=&quot;black&quot; name=&quot;apple-mobile-web-app-status-bar-style&quot;&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- 忽略邮箱地址电话 --&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;adress=no&quot;&gt;</span><br><span class="line">也可以连写：meta name=&quot;format-detection&quot; content=&quot;telephone=no,email=no,adress=no&quot; </span><br><span class="line"></span><br><span class="line">&lt;!-- IOS中Safari设置保存到桌面图标 --&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;custom_icon.png&quot;&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- uc强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- UC强制全屏 --&gt; </span><br><span class="line">&lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- UC应用模式 --&gt; </span><br><span class="line">&lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- QQ强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- QQ强制全屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- QQ应用模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;</span><br><span class="line"></span><br><span class="line">... ...</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/globle/">globle</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/mobileWeb/">mobileWeb</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-m-webbug-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/28/m-webbug-1/" class="article-date">
+  	<time datetime="2016-03-28T09:14:13.125Z" itemprop="datePublished">2016-03-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/28/m-webbug-1/">触发手机端浏览器中html的搜索框input</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>用html5做一个手机端浏览的网页。里面有个搜索框(input=’search’),</p>
+<p>想和baidu等网站一样不单独加一个搜索按钮在页面上，而是使用输入法软键盘里的搜索按钮或图标来触发事件。</p>
+</blockquote>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;&quot; method=&quot;get&quot; &gt;</span><br><span class="line">	&lt;input title=&quot;keyword&quot; type=&quot;search&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">//也就是给input添加一个 form 外层！！！</span><br></pre></td></tr></table></figure>
+<p>当然在移动端会根据不同的场景来处理这种问题， 比方说加一个搜索按钮等等，只要不妨碍用户体验就好</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/form/">form</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/mobileWeb/">mobileWeb</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-meta" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -808,173 +1008,9 @@
 
 
   
-    <article id="post-hexo-my" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/17/hexo-my/" class="article-date">
-  	<time datetime="2016-03-17T01:36:14.549Z" itemprop="datePublished">2016-03-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/17/hexo-my/">自己在搭建Hexo中所遇到的问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<a href="https://hexo.io/" target="_blank" rel="external">hexo.io</a></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">https://hexo.io/zh-cn/docs/</a></li>
-</ul>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><blockquote>
-<p>安装GIT</p>
-<p>安装Node.JS</p>
-</blockquote>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>配置好<code>GitHub</code>目录后，双击桌面上的<code>Git Shell</code>，输入<code>npm</code>命令即可安装 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">npm install hexo --save</span><br><span class="line"></span><br><span class="line">#如果命令无法运行，可以尝试更换taobao的npm源</span><br><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>在命令行中输入：<code> hexo -v </code> 你可以看到Hexo是不是已经安装好了。</p>
-<h2 id="创建Hexo文件夹"><a href="#创建Hexo文件夹" class="headerlink" title="创建Hexo文件夹"></a>创建Hexo文件夹</h2><p>安装完成后，根据自己喜好建立目录（如<code>E:\kuaipan\GitHub\hexo</code>），进入<code>Git Shell</code>切换到该路径下<code>E:\kuaipan\GitHub\hexo</code>执行以下指令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">exo init</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</span></span><br><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br><span class="line"></span><br><span class="line"><span class="comment">#新建完成后，指定文件夹的目录如下</span></span><br><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── scripts</span><br><span class="line">├── <span class="built_in">source</span></span><br><span class="line">|      ├── _drafts</span><br><span class="line">|      └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-<h2 id="安装Hexo插件"><a href="#安装Hexo插件" class="headerlink" title="安装Hexo插件"></a>安装Hexo插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-category --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-deployer-heroku --save</span><br><span class="line">npm install hexo-deployer-rsync --save</span><br><span class="line">npm install hexo-deployer-openshift --save</span><br><span class="line">npm install hexo-renderer-marked@0.2 --save</span><br><span class="line">npm install hexo-renderer-stylus@0.2 --save</span><br><span class="line">npm install hexo-generator-feed@1 --save</span><br><span class="line">npm install hexo-generator-sitemap@1 --save</span><br></pre></td></tr></table></figure>
-<h2 id="本地查看效果"><a href="#本地查看效果" class="headerlink" title="本地查看效果"></a>本地查看效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<h2 id="本地查看效果-1"><a href="#本地查看效果-1" class="headerlink" title="本地查看效果"></a>本地查看效果</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo n <span class="comment">#生成文章，或者source\_posts手动编辑</span></span><br><span class="line">hexo s <span class="comment">#本地发布预览效果</span></span><br><span class="line">hexo g <span class="comment">#生成public静态文件</span></span><br></pre></td></tr></table></figure>
-<h2 id="部署问题"><a href="#部署问题" class="headerlink" title="部署问题"></a>部署问题</h2><blockquote>
-<p> 先hexo g再执行hexo d布署，也可使直接用hexo d -g<br> hexo 更新到3.0之后，deploy的type 的github需要改成git<br> 在执行 hexo deploy 后,出现 error deployer not found:git 的错误处理<br> 输入代码 ：  npm install hexo-deployer-git –save   即可</p>
-</blockquote>
-<h2 id="主题选择"><a href="#主题选择" class="headerlink" title="主题选择"></a>主题选择</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
-<h2 id="主题遇到问题"><a href="#主题遇到问题" class="headerlink" title="主题遇到问题"></a>主题遇到问题</h2><ul>
-<li>图片使用本地路径：在<code>hexo/source</code>目录下新建一个<code>images</code>文件夹，将图片放入该文件夹下，插入图片时链接即为<code>/images/图片名称</code></li>
-<li><p>添加“关于自己” 在<code>source</code>先新建文件夹about，然后添加编辑<code>source/about/index.md</code> ， 编辑themes/yilia/_config.yml，添加如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">关于: /about</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给主题添加自己写的样式，在主题对应的 <code>css</code>目录下新建自己的 <code>_my.styl</code> 然后在 <code>style.styl</code> 添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;_my&quot;</span><br></pre></td></tr></table></figure>
-<p>在自己的  <code>_my.styl</code> css中注意图片路劲</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#container .left-col .overlay&#123;</span><br><span class="line">	background:url(&apos;/img/bg.jpg&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我的hexo能成功部署 且大开链接也有效果 只是每次在hexo s 的时候会有瑕疵，有如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"> 	➜  blog  hexo s</span><br><span class="line">INFO  Start processing</span><br><span class="line">ERROR Process failed: layout/.DS_Store</span><br><span class="line">TypeError: Cannot read property &apos;compile&apos; of undefined</span><br><span class="line">    at View._precompile (/Users/idisfkj/blog/node_modules/hexo/lib/theme/view.js:104:22)</span><br><span class="line">    at View (/Users/idisfkj/blog/node_modules/hexo/lib/theme/view.js:13:8)</span><br><span class="line">    at new Theme._View.View (/Users/idisfkj/blog/node_modules/hexo/lib/theme/index.js:37:10)</span><br><span class="line">    at Theme.setView (/Users/idisfkj/blog/node_modules/hexo/lib/theme/index.js:71:20)</span><br><span class="line">    at /Users/idisfkj/blog/node_modules/hexo/lib/theme/processors/view.js:14:14</span><br><span class="line">    at tryCatcher (/Users/idisfkj/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:503:31)</span><br><span class="line">    at Promise._settlePromise (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:560:18)</span><br><span class="line">    at Promise._settlePromise0 (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:605:10)</span><br><span class="line">    at Promise._settlePromises (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:684:18)</span><br><span class="line">    at Promise._fulfill (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:629:18)</span><br><span class="line">    at Promise._resolveCallback (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:424:57)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:515:17)</span><br><span class="line">    at Promise._settlePromise (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:560:18)</span><br><span class="line">    at Promise._settlePromise0 (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:605:10)</span><br><span class="line">    at Promise._settlePromises (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:684:18)</span><br><span class="line">    at Promise._fulfill (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:629:18)</span><br><span class="line">    at /Users/idisfkj/blog/node_modules/bluebird/js/release/nodeback.js:42:21</span><br><span class="line">    at /Users/idisfkj/blog/node_modules/graceful-fs/graceful-fs.js:78:16</span><br><span class="line">    at tryToString (fs.js:414:3)</span><br><span class="line">    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:401:12)</span><br><span class="line">ERROR Process failed: layout/_partial/.DS_Store</span><br><span class="line">TypeError: Cannot read property &apos;compile&apos; of undefined</span><br><span class="line">    at View._precompile (/Users/idisfkj/blog/node_modules/hexo/lib/theme/view.js:104:22)</span><br><span class="line">    at View (/Users/idisfkj/blog/node_modules/hexo/lib/theme/view.js:13:8)</span><br><span class="line">    at new Theme._View.View (/Users/idisfkj/blog/node_modules/hexo/lib/theme/index.js:37:10)</span><br><span class="line">    at Theme.setView (/Users/idisfkj/blog/node_modules/hexo/lib/theme/index.js:71:20)</span><br><span class="line">    at /Users/idisfkj/blog/node_modules/hexo/lib/theme/processors/view.js:14:14</span><br><span class="line">    at tryCatcher (/Users/idisfkj/blog/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:503:31)</span><br><span class="line">    at Promise._settlePromise (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:560:18)</span><br><span class="line">    at Promise._settlePromise0 (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:605:10)</span><br><span class="line">    at Promise._settlePromises (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:684:18)</span><br><span class="line">    at Promise._fulfill (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:629:18)</span><br><span class="line">    at Promise._resolveCallback (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:424:57)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:515:17)</span><br><span class="line">    at Promise._settlePromise (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:560:18)</span><br><span class="line">    at Promise._settlePromise0 (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:605:10)</span><br><span class="line">    at Promise._settlePromises (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:684:18)</span><br><span class="line">    at Promise._fulfill (/Users/idisfkj/blog/node_modules/bluebird/js/release/promise.js:629:18)</span><br><span class="line">    at /Users/idisfkj/blog/node_modules/bluebird/js/release/nodeback.js:42:21</span><br><span class="line">    at /Users/idisfkj/blog/node_modules/graceful-fs/graceful-fs.js:78:16</span><br><span class="line">    at tryToString (fs.js:414:3)</span><br><span class="line">    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:401:12)</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-<p>  解决方法：cd 进到你使用的<code>theme</code>对应的目录，再进到<code>layout/</code>和<code>layout/_partial/</code>下，分别执行<code>rm .DS_Store</code></p>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/tools/">tools</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-system" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/16/hexo-system/" class="article-date">
-  	<time datetime="2016-03-16T09:35:22.254Z" itemprop="datePublished">2016-03-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/16/hexo-system/">Hexo的基本命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/tools/">tools</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -982,7 +1018,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 吴银星
+    		&copy; 2017 wuyinxing
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
