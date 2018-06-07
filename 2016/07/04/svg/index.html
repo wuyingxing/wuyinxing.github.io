@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>HTML中SVG图像图像处理 |  前端笔记</title>
+
+  <meta name="keywords" content="HTML中SVG图像图像处理 ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SVG是“可缩放矢量图”（Scalable Vector Graphics）的缩写，是一种描述向量图形的XML格式的标记化语言。也就是说，SVG本质上是文本文件，格式采用XML，可以在浏览器中显示出矢量图像。由于结构是XML格式，使得它可以插入HTML文档，成为DOM的一部分，然后用JavaScript和CSS进行操作。相比传统的图像文件格式（比如JPG和PNG），SVG图像的优势就是文件体积小，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML中SVG图像图像处理">
+<meta property="og:url" content="http://yoursite.com/2016/07/04/svg/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SVG是“可缩放矢量图”（Scalable Vector Graphics）的缩写，是一种描述向量图形的XML格式的标记化语言。也就是说，SVG本质上是文本文件，格式采用XML，可以在浏览器中显示出矢量图像。由于结构是XML格式，使得它可以插入HTML文档，成为DOM的一部分，然后用JavaScript和CSS进行操作。相比传统的图像文件格式（比如JPG和PNG），SVG图像的优势就是文件体积小，">
+<meta property="og:updated_time" content="2018-06-07T07:20:30.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML中SVG图像图像处理">
+<meta name="twitter:description" content="SVG是“可缩放矢量图”（Scalable Vector Graphics）的缩写，是一种描述向量图形的XML格式的标记化语言。也就是说，SVG本质上是文本文件，格式采用XML，可以在浏览器中显示出矢量图像。由于结构是XML格式，使得它可以插入HTML文档，成为DOM的一部分，然后用JavaScript和CSS进行操作。相比传统的图像文件格式（比如JPG和PNG），SVG图像的优势就是文件体积小，">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wuyinxing</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于自己</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wuyinxing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wuyinxing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于自己</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-svg" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/04/svg/" class="article-date">
+  	<time datetime="2016-07-03T16:00:00.000Z" itemprop="datePublished">2016-07-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML中SVG图像图像处理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/HTML/">HTML</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SVG是“可缩放矢量图”（Scalable Vector Graphics）的缩写，是一种描述向量图形的XML格式的标记化语言。也就是说，SVG本质上是文本文件，格式采用XML，可以在浏览器中显示出矢量图像。由于结构是XML格式，使得它可以插入HTML文档，成为DOM的一部分，然后用JavaScript和CSS进行操作。<br>相比传统的图像文件格式（比如JPG和PNG），SVG图像的优势就是文件体积小，并且放大多少倍都不会失真，因此非常合适用于网页。</p>
+<p>SVG图像可以用Adobe公司的Illustrator软件、开源软件Inkscape等生成。目前，所有主流浏览器都支持，对于低于IE 9的浏览器，可以使用第三方的polyfills函数库。</p>
+<h2 id="插入SVG文件"><a href="#插入SVG文件" class="headerlink" title="插入SVG文件"></a>插入SVG文件</h2><p>SVG插入网页的方法有多种，可以用在img、object、embed、iframe等标签，以及CSS的background-image属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;circle.svg&quot;&gt;</span><br><span class="line">&lt;object id=&quot;object&quot; data=&quot;circle.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span><br><span class="line">&lt;embed id=&quot;embed&quot; src=&quot;icon.svg&quot; type=&quot;image/svg+xml&quot;&gt;</span><br><span class="line">&lt;iframe id=&quot;iframe&quot; src=&quot;icon.svg&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<p>上面是四种在网页中插入SVG图像的方式。</p>
+<p>此外，SVG文件还可以插入其他DOM元素，比如div元素，请看下面的例子（使用了jQuery函数库）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;stage&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(&quot;#stage&quot;).load(&apos;icon.svg&apos;,function(response)&#123;</span><br><span class="line">  $(this).addClass(&quot;svgLoaded&quot;);</span><br><span class="line">  if(!response)&#123;</span><br><span class="line">    // 加载失败的处理代码</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="svg格式"><a href="#svg格式" class="headerlink" title="svg格式"></a>svg格式</h2><p>SVG文件采用XML格式，就是普通的文本文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">  &lt;circle cx=&quot;30&quot;  cy=&quot;50&quot; r=&quot;25&quot; /&gt;</span><br><span class="line">  &lt;circle cx=&quot;90&quot;  cy=&quot;50&quot; r=&quot;25&quot; class=&quot;red&quot; /&gt;</span><br><span class="line">  &lt;circle cx=&quot;150&quot; cy=&quot;50&quot; r=&quot;25&quot; class=&quot;fancy&quot; /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<p>上面的svg文件，定义了三个圆，它们的cx、cy、r属性分别为x坐标、y坐标和半径。利用class属性，可以为这些圆指定样式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.red &#123;</span><br><span class="line">  fill: red; /* not background-color! */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.fancy &#123;</span><br><span class="line">  fill: none;</span><br><span class="line">  stroke: black; /* similar to border-color */</span><br><span class="line">  stroke-width: 3pt; /* similar to border-width */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，fill属性表示填充色，stroke属性表示描边色，stroke-width属性表示边线宽度。</p>
+<p>除了circle标签表示圆，SVG文件还可以使用表示其他形状的标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">  &lt;line x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;200&quot; y2=&quot;0&quot; style=&quot;stroke:rgb(0,0,0);stroke-width:1&quot;/&gt;&lt;/line&gt;</span><br><span class="line">  &lt;rect x=&quot;0&quot; y=&quot;0&quot; height=&quot;100&quot; width=&quot;200&quot; style=&quot;stroke: #70d5dd; fill: #dd524b&quot; /&gt;</span><br><span class="line">  &lt;ellipse cx=&quot;60&quot; cy=&quot;60&quot; ry=&quot;40&quot; rx=&quot;20&quot; stroke=&quot;black&quot; stroke-width=&quot;5&quot; fill=&quot;silver&quot;/&gt;&lt;/ellipse&gt;</span><br><span class="line">	&lt;polygon fill=&quot;green&quot; stroke=&quot;orange&quot; stroke-width=&quot;10&quot; points=&quot;350, 75  379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161&quot;/&gt;&lt;polygon&gt;</span><br><span class="line">	&lt;path id=&quot;path1&quot; d=&quot;M160.143,196c0,0,62.777-28.033,90-17.143c71.428,28.572,73.952-25.987,84.286-21.428&quot; style=&quot;fill:none;stroke:2;&quot;&gt;&lt;/path&gt;  </span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，line、rect、ellipse、polygon和path标签，分别表示线条、矩形、椭圆、多边形和路径。</p>
+<p>g标签用于将多个形状组成一组，表示group。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">  &lt;g transform=&quot;translate(5, 15)&quot;&gt;</span><br><span class="line">    &lt;text x=&quot;0&quot; y=&quot;0&quot;&gt;Howdy!&lt;/text&gt;</span><br><span class="line">    &lt;path d=&quot;M0,50 L50,0 Q100,0 100,50&quot;</span><br><span class="line">      fill=&quot;none&quot; stroke-width=&quot;3&quot; stroke=&quot;black&quot; /&gt;</span><br><span class="line">  &lt;/g&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="SVG文件的JavaScript操作"><a href="#SVG文件的JavaScript操作" class="headerlink" title="SVG文件的JavaScript操作"></a>SVG文件的JavaScript操作</h2><ul>
+<li>获取SVG DOM<br>如果使用img标签插入SVG文件，则无法获取SVG DOM。使用object、iframe、embed标签，可以获取SVG DOM。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var svgObject = document.getElementById(&quot;object&quot;).contentDocument;</span><br><span class="line">var svgIframe = document.getElementById(&quot;iframe&quot;).contentDocument;</span><br><span class="line">var svgEmbed = document.getElementById(&quot;embed&quot;).getSVGDocument();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>由于svg文件就是一般的XML文件，因此可以用DOM方法，选取页面元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 改变填充色</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).style.fill = &quot;red&quot;;</span><br><span class="line"></span><br><span class="line">// 改变元素属性</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).setAttribute(&quot;class&quot;, &quot;changedColors&quot;);</span><br><span class="line"></span><br><span class="line">// 绑定事件回调函数</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).addEventListener(&quot;click&quot;, function() &#123;</span><br><span class="line">   console.log(&quot;clicked&quot;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读取svg源码<br>由于svg文件就是一个XML代码的文本文件，因此可以通过读取XML代码的方式，读取svg源码。<br>假定网页中有一个svg元素。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;svg-container&quot;&gt;</span><br><span class="line">	&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xml:space=&quot;preserve&quot; width=&quot;500&quot; height=&quot;440&quot;&gt;</span><br><span class="line">		&lt;!-- svg code --&gt;</span><br><span class="line">	&lt;/svg&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用XMLSerializer实例的serializeToString方法，获取svg元素的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var svgString = new XMLSerializer().serializeToString(document.querySelector(&apos;svg&apos;));</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>将svg图像转为canvas图像<br>首先，需要新建一个img对象，将svg图像指定到该img对象的src属性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var img = new Image();</span><br><span class="line">var svg = new Blob([svgString], &#123;type: &quot;image/svg+xml;charset=utf-8&quot;&#125;);</span><br><span class="line"></span><br><span class="line">var DOMURL = self.URL || self.webkitURL || self;</span><br><span class="line">var url = DOMURL.createObjectURL(svg);</span><br><span class="line"></span><br><span class="line">img.src = url;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后，当图像加载完成后，再将它绘制到canvas元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">img.onload = function() &#123;</span><br><span class="line">	var canvas = document.getElementById(&quot;canvas&quot;);</span><br><span class="line">	var ctx = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">    ctx.drawImage(img, 0, 0);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/14/socket/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          WebSocket
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/23/m-webbug-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android手机浏览器overflow是scroll失效</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="svg" data-title="HTML中SVG图像图像处理" data-url="http://yoursite.com/2016/07/04/svg/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 wuyinxing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

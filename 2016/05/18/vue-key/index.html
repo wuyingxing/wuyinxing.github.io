@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Vue key的用法 |  前端笔记</title>
+
+  <meta name="keywords" content="Vue key的用法 ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很多人在学习vue的过程中，只是知道v-for语句，添加key就不会有警告，仅仅如此而已！
+
+我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法（这里不做详细介绍）。因此key在日常使用中通常的作用有两点，其中第二点很少人使用：
+1. key的作用主要是为了高效的更新虚拟DOM
+2. 完整地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue key的用法">
+<meta property="og:url" content="http://yoursite.com/2016/05/18/vue-key/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="很多人在学习vue的过程中，只是知道v-for语句，添加key就不会有警告，仅仅如此而已！
+
+我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法（这里不做详细介绍）。因此key在日常使用中通常的作用有两点，其中第二点很少人使用：
+1. key的作用主要是为了高效的更新虚拟DOM
+2. 完整地">
+<meta property="og:updated_time" content="2018-06-07T07:20:33.949Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue key的用法">
+<meta name="twitter:description" content="很多人在学习vue的过程中，只是知道v-for语句，添加key就不会有警告，仅仅如此而已！
+
+我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法（这里不做详细介绍）。因此key在日常使用中通常的作用有两点，其中第二点很少人使用：
+1. key的作用主要是为了高效的更新虚拟DOM
+2. 完整地">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wuyinxing</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于自己</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wuyinxing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wuyinxing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于自己</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-vue-key" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/18/vue-key/" class="article-date">
+  	<time datetime="2016-05-18T06:57:29.000Z" itemprop="datePublished">2016-05-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue key的用法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>很多人在学习vue的过程中，只是知道v-for语句，添加key就不会有警告，仅仅如此而已！</p>
+</blockquote>
+<p>我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法（这里不做详细介绍）。因此key在日常使用中通常的作用有两点，其中第二点很少人使用：</p>
+<p><strong>1. key的作用主要是为了高效的更新虚拟DOM</strong></p>
+<p><strong>2. 完整地触发组件的生命周期钩子</strong></p>
+<hr>
+<p>首先我们聊一下v-for中的使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;...&lt;/li&gt;      </span><br><span class="line">  &lt;li v-for=&quot;(item,index) in items&quot; :key=&quot;index&quot;&gt;...&lt;/li&gt;</span><br><span class="line">  &lt;li v-for=&quot;(item,key,index) in items&quot; :key=&quot;key&quot;&gt;...&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>上面代码是三种常用的Key的使用方式，但是这三种是有区别的，假设item是对象，且有id属性：</p>
+<blockquote>
+<p>第一种，当id值变化，元素（li）重新渲染，id值无变化，元素（li）不会重新渲染。 </p>
+<p>第二种，当id值变化，元素（li）不会重新渲染， 当改变位置时，元素（li）重新渲染。</p>
+<p>第三种，当id值变化，元素（li）不会重新渲染， 当改变位置时，元素（li）重新渲染。</p>
+</blockquote>
+<p>通过上面的三种结论我们得出：</p>
+<p><strong>使用v-for渲染元素时，使用元素自身的id属性去指定渲染元素的key值有利于单个元素的重新渲染，若采用其他如v-for提供的index, key等值，在改变渲染出来的DOM结构时，会触发所有元素的重新渲染，当数据过大时，可能会造成性能负担。</strong></p>
+<p><strong>因此当我们在使用v-for进行渲染时，尽可能使用渲染元素自身属性的id给渲染的元素绑定一个key值，这样在当前渲染元素的DOM结构发生变化时，能够单独响应该元素而不触发所有元素的渲染。</strong></p>
+<hr>
+<p>从上面的v-for实例中，如果我们把元素（li）替换成组件，该组件如果重新渲染，则会触发生命周期的钩子。</p>
+<p>下面我们通过实例来说明key的另一种使用方法.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper class=&quot;myswper&quot; ref=&quot;mySwiper&quot; :options=&quot;swiperOption&quot;   :key=&quot;swiperSlides.length&quot; &gt;</span><br><span class="line">    &lt;swiper-slide   class=&quot;swiper-no-swiping&quot; v-for=&quot;(file, index) in swiperSlides&quot; :key=&quot;index&quot;  &gt;</span><br><span class="line">        &lt;img class=&quot;myImgs&quot; :src=&quot;file.url&quot;  :draggable=&quot;false&quot; &gt;</span><br><span class="line">    &lt;/swiper-slide&gt;</span><br><span class="line">&lt;/swiper&gt;</span><br></pre></td></tr></table></figure>
+<p>上面这段代码其实是两个组件外层 <code>swiper</code>组件， 里面sort部分是新的组件<code>swiper-slide</code>。 <code>swiper</code>组件也有一个key属性，这样写的目的是当 <code>swiper-slide</code>的数据长度有变化，<code>swiper</code>会重新渲染，然后触发生命周期！</p>
+<p>也可以简单的理解为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;A-component :key=&quot;obj.length&quot; &gt;&lt;/A-component&gt;</span><br><span class="line">&lt;B-component  v-for=&quot;(item, index) in obj&quot; :key=&quot;index&quot; &gt;&lt;/B-component&gt;</span><br></pre></td></tr></table></figure>
+<p>A组件想要在B组件变化时，重新渲染自己。 我们可以改变他的Key来实现。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/20/node-function/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Nodejs中对函数有趣用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/16/jQuery-extends/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery.extend 和 jQuery.fn.extend</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="vue-key" data-title="Vue key的用法" data-url="http://yoursite.com/2016/05/18/vue-key/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 wuyinxing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

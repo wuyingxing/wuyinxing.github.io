@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Nodejs中对函数有趣用法 |  前端笔记</title>
+
+  <meta name="keywords" content="Nodejs中对函数有趣用法 ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
+Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：
+123456789function say(word) &amp;#123;  console.log(word);&amp;#125;function execute(someFunction,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs中对函数有趣用法">
+<meta property="og:url" content="http://yoursite.com/2016/05/20/node-function/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
+Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：
+123456789function say(word) &amp;#123;  console.log(word);&amp;#125;function execute(someFunction,">
+<meta property="og:updated_time" content="2018-06-07T07:20:24.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs中对函数有趣用法">
+<meta name="twitter:description" content="在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
+Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：
+123456789function say(word) &amp;#123;  console.log(word);&amp;#125;function execute(someFunction,">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wuyinxing</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于自己</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wuyinxing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wuyinxing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于自己</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-node-function" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/20/node-function/" class="article-date">
+  	<time datetime="2016-05-19T16:00:00.000Z" itemprop="datePublished">2016-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nodejs中对函数有趣用法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Node/">Node</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在JavaScript中，一个函数可以作为另一个函数接收一个参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。</p>
+<p>Node.js中函数的使用与Javascript类似，举例来说，你可以这样做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function say(word) &#123;</span><br><span class="line">  console.log(word);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function execute(someFunction, value) &#123;</span><br><span class="line">  someFunction(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">execute(say, &quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
+<p>以上代码中，我们把 say 函数作为execute函数的第一个变量进行了传递。这里返回的不是 say 的返回值，而是 say 本身！<br>这样一来， say 就变成了execute 中的本地变量 someFunction ，execute可以通过调用 someFunction() （带括号的形式）来使用 say 函数。<br>当然，因为 say 有一个变量， execute 在调用 someFunction 时可以传递这样一个变量。</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>我们可以把一个函数作为变量传递。但是我们不一定要绕这个”先定义，再传递”的圈子，我们可以直接在另一个函数的括号中定义和传递这个函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function execute(someFunction, value) &#123;</span><br><span class="line">  someFunction(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">execute(function(word)&#123; console.log(word) &#125;, &quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
+<p>我们在 execute 接受第一个参数的地方直接定义了我们准备传递给 execute 的函数。<br>用这种方式，我们甚至不用给这个函数起名字，这也是为什么它被叫做匿名函数 。</p>
+<blockquote>
+<p> 在Node js中存在很多这种有意思写法</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/21/meta/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          HTML中的meta标签
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/18/vue-key/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue key的用法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="node-function" data-title="Nodejs中对函数有趣用法" data-url="http://yoursite.com/2016/05/20/node-function/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 wuyinxing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

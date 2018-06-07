@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>rem布局移动端自适应页面 |  前端笔记</title>
+
+  <meta name="keywords" content="rem布局移动端自适应页面 ">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言做了很多移动端web项目，在网页在适应上走了很多弯曲的道路，刚开始采用的是大众点评似的布局，百分比布局当然也用到了所谓的弹性布局flex，有天朋友给我推荐 rem布局，也慢慢开启的对rem的探索！
+首先我们来谈谈什么是rem
+rem简介rem  是CSS3新引进来的一个度量单位，大家心里肯定会觉得心灰意冷呀，担心浏览器的支持情况。其实大家不用害怕，你可能会惊讶，支持的浏览器还是蛮多的，比如：M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rem布局移动端自适应页面">
+<meta property="og:url" content="http://yoursite.com/2016/10/14/m-rem-layout/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言做了很多移动端web项目，在网页在适应上走了很多弯曲的道路，刚开始采用的是大众点评似的布局，百分比布局当然也用到了所谓的弹性布局flex，有天朋友给我推荐 rem布局，也慢慢开启的对rem的探索！
+首先我们来谈谈什么是rem
+rem简介rem  是CSS3新引进来的一个度量单位，大家心里肯定会觉得心灰意冷呀，担心浏览器的支持情况。其实大家不用害怕，你可能会惊讶，支持的浏览器还是蛮多的，比如：M">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-1.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-2.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/height.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-3.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-4.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-5.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-6.png">
+<meta property="og:image" content="http://yoursite.com/images/rem/wy-7.png">
+<meta property="og:updated_time" content="2018-06-07T07:22:38.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rem布局移动端自适应页面">
+<meta name="twitter:description" content="前言做了很多移动端web项目，在网页在适应上走了很多弯曲的道路，刚开始采用的是大众点评似的布局，百分比布局当然也用到了所谓的弹性布局flex，有天朋友给我推荐 rem布局，也慢慢开启的对rem的探索！
+首先我们来谈谈什么是rem
+rem简介rem  是CSS3新引进来的一个度量单位，大家心里肯定会觉得心灰意冷呀，担心浏览器的支持情况。其实大家不用害怕，你可能会惊讶，支持的浏览器还是蛮多的，比如：M">
+<meta name="twitter:image" content="http://yoursite.com/images/rem/wy-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">wuyinxing</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于自己</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">wuyinxing</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/images/my.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">wuyinxing</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于自己</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wuyinxing" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/wuyinxing" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://zhihu.com/people/wuyinxing" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-m-rem-layout" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/14/m-rem-layout/" class="article-date">
+  	<time datetime="2016-10-13T16:00:00.000Z" itemprop="datePublished">2016-10-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rem布局移动端自适应页面
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/layout/">layout</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/mobileWeb/">mobileWeb</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>做了很多移动端web项目，在网页在适应上走了很多弯曲的道路，刚开始采用的是<a href="https://m.dianping.com/" target="_blank" rel="external">大众点评</a>似的布局，百分比布局当然也用到了所谓的<strong>弹性布局</strong><code>flex</code>，有天朋友给我推荐 <a href="https://github.com/jieyou/rem_layout" target="_blank" rel="external"><strong>rem布局</strong></a>，也慢慢开启的对rem的探索！</p>
+<p>首先我们来谈谈什么是rem</p>
+<h2 id="rem简介"><a href="#rem简介" class="headerlink" title="rem简介"></a>rem简介</h2><p><strong>rem</strong>  是CSS3新引进来的一个度量单位，大家心里肯定会觉得心灰意冷呀，担心浏览器的支持情况。其实大家不用害怕，你可能会惊讶，支持的浏览器还是蛮多的，比如：Mozilla Firefox 3.6+、Apple Safari 5+、Google Chrome、IE9+和Opera11+。只是可怜的IE6-8无法，你们就把他们当透明了吧。</p>
+<p><strong>当使用 rem 单位，他们转化为像素大小取决于页根元素的字体大小，即 html 元素的字体大小。 根元素字体大小乘以你 rem 值。</strong></p>
+<p>例如，根元素的字体大小 16px，10rem 将等同于 160px，即 10 x 16 = 160。</p>
+<p>通常我们设置font-size：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html &#123; font-size: 62.5%; &#125;</span><br></pre></td></tr></table></figure>
+<p>因为<strong>任何浏览器的默认字体大小都是16px</strong>，所以也就是说</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html &#123; font-size: 10px; &#125;</span><br></pre></td></tr></table></figure>
+<p>这样有利于我们队rem 和 em 的换算； 也就是 1rem  = 10px （10px 为根元素的的字体大小）；</p>
+<p><strong>问题的引出</strong></p>
+<p>这里结合自己对网易与淘宝移动端首页html元素上的font-size这个属性的思考与学习，讨论html5设计稿尺寸以及前端与设计之间协作流程的问题。</p>
+<p>如果html5要适应各种分辨率的移动设备，应该使用rem这样的尺寸单位，同时给出了一段针对各个分辨率范围在html上设置font-size的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">html&#123;font-size:10px&#125;</span><br><span class="line">@media screen and (min-width:321px) and (max-width:375px)&#123;html&#123;font-size:11px&#125;&#125;</span><br><span class="line">@media screen and (min-width:376px) and (max-width:414px)&#123;html&#123;font-size:12px&#125;&#125;</span><br><span class="line">@media screen and (min-width:415px) and (max-width:639px)&#123;html&#123;font-size:15px&#125;&#125;</span><br><span class="line">@media screen and (min-width:640px) and (max-width:719px)&#123;html&#123;font-size:20px&#125;&#125;</span><br><span class="line">@media screen and (min-width:720px) and (max-width:749px)&#123;html&#123;font-size:22.5px&#125;&#125;</span><br><span class="line">@media screen and (min-width:750px) and (max-width:799px)&#123;html&#123;font-size:23.5px&#125;&#125;</span><br><span class="line">@media screen and (min-width:800px)&#123;html&#123;font-size:25px&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>在实际项目中，把与元素尺寸有关的css，如width,height,line-height,margin,padding等都以rem作为单位，这样页面在不同设备下就能保持一致的网页布局。举例来说，网页有一个.item类，设置了width为3.4rem，该类在不同分辨率下对应的实际宽度如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">321px &lt;= device-width &lt;= 375px，font-size:11px        ---&gt;  .item的width：34px</span><br><span class="line">376px &lt;= device-width &lt;= 414px，font-size:12px        ---&gt;  .item的width：37.4px</span><br><span class="line">415px &lt;= device-width &lt;= 639px，font-size:15px        ---&gt;  .item的width：40.8px</span><br><span class="line">640px &lt;= device-width &lt;= 719px，font-size:20px        ---&gt;  .item的width：51px</span><br><span class="line">720px &lt;= device-width &lt;= 749px，font-size:22.5px      ---&gt;  .item的width：76.5px</span><br><span class="line">750px &lt;= device-width &lt;= 799px，font-size:23.5px      ---&gt;  .item的width：79.8999999px</span><br><span class="line">800px &lt;= device-width         ，font-size:25px        ---&gt;  .item的width：85px</span><br></pre></td></tr></table></figure>
+<p>以上代码乍看没啥问题，响应式设计不就应该是这么干的吗？但是从工作量和复杂度方面来考虑，它有以下几个不足：</p>
+<p>（1）.item类在所有设备下的width都是3.4rem，但在不同分辨率下的实际像素是不一样的，所以在有些分辨率下，width的界面效果不一定合适，有可能太宽，有可能太窄，这时候就要对width进行调整，那么就需要针对.item写媒介查询的代码，为该分辨率重新设计一个rem值。然而，这里有7种媒介查询的情况，css又有很多跟尺寸相关的属性，哪个属性在哪个分辨率范围不合适都是不定的，最后会导致要写很多的媒介查询才能适配所有设备，而且在写的时候rem都得根据某个分辨率html的font-size去算，这个计算可不见得每次都那么容易，比如40px / 23.5px，这个rem值口算不出来吧！由此可见这其中的麻烦有多少。</p>
+<p>（2）以上代码中给出的7个范围下的font-size不一定是合适的，这7个范围也不一定合适，实际有可能不需要这么多，所以找出这些个范围，以及每个范围最合适的font-size也很麻烦</p>
+<p>（3）设计稿都是以分辨率来标明尺寸的，前端在根据设计稿里各个元素的像素尺寸转换为rem时，该以哪个font-size为准呢？这需要去写才能知道。<br>正是因为以上提到的一些不足，我觉得这种适配方式不是特别好，写起来太麻烦。为了完成工作，我们需要找寻更简单更有效率的方法。那么html5该如何去做众多移动设备的适配呢？</p>
+<h2 id="网易的做法"><a href="#网易的做法" class="headerlink" title="网易的做法"></a>网易的做法</h2><p>先来看看网易在不同分辨率下，呈现的效果：</p>
+<p><img src="/images/rem/wy-1.png" alt=""> <img src="/images/rem/wy-2.png" alt=""></p>
+<p>从这两张图片可以看出，随着分辨率的增大，页面的效果会发生明显变化，主要体现在各个元素的宽高与间距。375<em>680的比320</em>680的导航栏明显要高。能够达到这种效果的根本原因就是因为网易页面里除了font-size之外的其它css尺寸都使用了rem作为单位，比如你看导航栏的高度设置代码:</p>
+<p><img src="/images/rem/height.png" alt=""></p>
+<p>使用rem布局结合在html上根据不同分辨率设置不同font-size有很多不好解决的麻烦，网易是如何解决的呢？ </p>
+<p>最根本的原因在于，网易页面上html的font-size不是预先通过媒介查询在css里定义好的，而是通过js计算出来的 ，所以当分辨率发生变化时，html的font-size就会变，不过这得在你调整分辨率后，刷新页面才能看得到效果。你看代码就知道为啥font-size是直接写到html的style上面的了（js设置的原因）</p>
+<p><img src="/images/rem/wy-3.png" alt=""></p>
+<p>它是根据什么计算的，这就跟设计稿有关了，拿网易来说，它的设计稿应该是基于iphone4或者iphone5来的，所以它的设计稿竖直放时的横向分辨率为640px，为了计算方便，取一个100px的font-size为参照，那么body元素的宽度就可以设置为width: 6.4rem，于是html的font-size=deviceWidth / 6.4。这个deviceWidth就是viewport设置中的那个deviceWidth。根据这个计算规则，可得出本部分开始的四张截图中html的font-size大小如下：</p>
+<p>deviceWidth = 320，font-size = 320 / 6.4 = 50px<br>deviceWidth = 375，font-size = 375 / 6.4 = 58.59375px<br>deviceWidth = 414，font-size = 414 / 6.4 = 64.6875px<br>deviceWidth = 500，font-size = 500 / 6.4 = 78.125px<br>事实上网易就是这么干的，你看它的代码就知道，body元素的宽是：</p>
+<p><img src="/images/rem/wy-4.png" alt=""></p>
+<p>根据这个可以肯定它的设计稿竖着时的横向分辨率为640。然后你再看看网易在分辨率为320<em>680，375</em>680，414<em>680，500</em>680时，html的font-size是不是与上面计算的一致：</p>
+<p><img src="/images/rem/wy-5.png" alt=""></p>
+<p>这个deviceWidth通过document.documentElement.clientWidth就能取到了，所以当页面的dom ready后，做的第一件事情就是：</p>
+<p><strong>document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + ‘px’;</strong></p>
+<p>这个6.4怎么来的，当然是根据设计稿的横向分辨率/100得来的。下面总结下网易的这种做法：</p>
+<ul>
+<li>（1）先拿设计稿竖着的横向分辨率除以100得到body元素的宽度：</li>
+</ul>
+<p>如果设计稿基于iphone6，横向分辨率为750，body的width为750 / 100 = 7.5rem<br>如果设计稿基于iphone4/5，横向分辨率为640，body的width为640 / 100 = 6.4rem</p>
+<ul>
+<li>（2）布局时，设计图标注的尺寸除以100得到css中的尺寸，比如下图：</li>
+</ul>
+<p><img src="/images/rem/wy-6.png" alt=""></p>
+<p>播放器高度为210px，写样式的时候css应该这么写：height: 2.1rem。之所以取一个100作为参照，就是为了这里计算rem的方便！<br>（3）在dom ready以后，通过以下代码设置html的font-size:<br>document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + ‘px’;<br>6.4只是举个例子，如果是750的设计稿，应该除以7.5。<br>（4）font-size可能需要额外的媒介查询，并且font-size不能使用rem，如网易的设置：<br>@media screen and (max-width:321px){<br>    .m-navlist{font-size:15px}<br>}<br>@media screen and (min-width:321px) and (max-width:400px){<br>    .m-navlist{font-size:16px}<br>}<br>@media screen and (min-width:400px){<br>    .m-navlist{font-size:18px}<br>}<br>最后还有2个情况要说明：</p>
+<p>第一，如果采用网易这种做法，视口要如下设置：</p>
+<p><meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1"><br>第二，当deviceWidth大于设计稿的横向分辨率时，html的font-size始终等于横向分辨率/body元素宽,</p>
+<p><img src="/images/rem/wy-7.png" alt=""></p>
+<p>之所以这么干，是因为当deviceWidth大于640时，则物理分辨率大于1280（这就看设备的devicePixelRatio这个值了），应该去访问pc网站了。事实就是这样，你从手机访问网易，看到的是触屏版的页面，如果从pad访问，看到的就是电脑版的页面。如果你也想这么干，只要把总结中第三步的代码稍微改一下就行了：</p>
+<p>var deviceWidth = document.documentElement.clientWidth;<br>if(deviceWidth &gt; 640) deviceWidth = 640;<br>document.documentElement.style.fontSize = deviceWidth / 6.4 + ‘px’;</p>
+<p>然后就把网易代码给拔了下来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">var Dpr = 1, uAgent = window.navigator.userAgent;</span><br><span class="line">var isIOS = uAgent.match(/iphone/i);</span><br><span class="line">var isYIXIN = uAgent.match(/yixin/i);</span><br><span class="line">var is2345 = uAgent.match(/Mb2345/i);</span><br><span class="line">var ishaosou = uAgent.match(/mso_app/i);</span><br><span class="line">var isSogou = uAgent.match(/sogoumobilebrowser/ig);</span><br><span class="line">var isLiebao = uAgent.match(/liebaofast/i);</span><br><span class="line">var isGnbr = uAgent.match(/GNBR/i);</span><br><span class="line">function resizeRoot()&#123;</span><br><span class="line">    var wWidth = (screen.width &gt; 0) ? (window.innerWidth &gt;= screen.width || window.innerWidth == 0) ? screen.width : window.innerWidth : window.innerWidth, wDpr, wFsize;</span><br><span class="line">    var wHeight = (screen.height &gt; 0) ? (window.innerHeight &gt;= screen.height || window.innerHeight == 0) ? screen.height : window.innerHeight : window.innerHeight;</span><br><span class="line">    if (window.devicePixelRatio) &#123;</span><br><span class="line">        wDpr = window.devicePixelRatio;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        wDpr = isIOS ? wWidth &gt; 818 ? 3 : wWidth &gt; 480 ? 2 : 1 : 1;</span><br><span class="line">    &#125;</span><br><span class="line">    if(isIOS) &#123;</span><br><span class="line">        wWidth = screen.width;</span><br><span class="line">        wHeight = screen.height;</span><br><span class="line">    &#125;</span><br><span class="line">    // if(window.orientation==90||window.orientation==-90)&#123;</span><br><span class="line">    //     wWidth = wHeight;</span><br><span class="line">    // &#125;else if((window.orientation==180||window.orientation==0))&#123;</span><br><span class="line">    // &#125;</span><br><span class="line">    if(wWidth &gt; wHeight)&#123;</span><br><span class="line">        wWidth = wHeight;</span><br><span class="line">    &#125;</span><br><span class="line">    wFsize = wWidth &gt; 1080 ? 144 : wWidth / 7.5;</span><br><span class="line">    wFsize = wFsize &gt; 32 ? wFsize : 32;</span><br><span class="line">    window.screenWidth_ = wWidth;</span><br><span class="line">    if(isYIXIN || is2345 || ishaosou || isSogou || isLiebao || isGnbr)&#123;//YIXIN 和 2345 这里有个刚调用系统浏览器时候的bug，需要一点延迟来获取</span><br><span class="line">        setTimeout(function()&#123;</span><br><span class="line">            wWidth = (screen.width &gt; 0) ? (window.innerWidth &gt;= screen.width || window.innerWidth == 0) ? screen.width : window.innerWidth : window.innerWidth;</span><br><span class="line">            wHeight = (screen.height &gt; 0) ? (window.innerHeight &gt;= screen.height || window.innerHeight == 0) ? screen.height : window.innerHeight : window.innerHeight;</span><br><span class="line">            wFsize = wWidth &gt; 1080 ? 144 : wWidth / 7.5;</span><br><span class="line">            wFsize = wFsize &gt; 32 ? wFsize : 32;</span><br><span class="line">            // document.getElementsByTagName(&apos;html&apos;)[0].dataset.dpr = wDpr;</span><br><span class="line">            document.getElementsByTagName(&apos;html&apos;)[0].style.fontSize = wFsize + &apos;px&apos;;</span><br><span class="line">            document.getElementById(&quot;fixed&quot;).style.display=&quot;none&quot;;</span><br><span class="line">        &#125;,500);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        // document.getElementsByTagName(&apos;html&apos;)[0].dataset.dpr = wDpr;</span><br><span class="line">        document.getElementsByTagName(&apos;html&apos;)[0].style.fontSize = wFsize + &apos;px&apos;;</span><br><span class="line">        document.getElementById(&quot;fixed&quot;).style.display=&quot;none&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    // alert(&quot;fz=&quot;+wFsize+&quot;;dpr=&quot;+window.devicePixelRatio+&quot;;</span><br><span class="line">    //UA=&quot;+uAgent+&quot;;width=&quot;+wWidth+&quot;;sw=&quot;+screen.width+&quot;;</span><br><span class="line">    //wiw=&quot;+window.innerWidth+&quot;;wsw=&quot;+window.screen.width+window.screen.availWidth);</span><br><span class="line">&#125;</span><br><span class="line">resizeRoot();</span><br></pre></td></tr></table></figure>
+<h2 id="淘宝的做法"><a href="#淘宝的做法" class="headerlink" title="淘宝的做法"></a>淘宝的做法</h2><p>淘宝的效果跟网易的效果其实是类似的，随着分辨率的变化，页面元素的尺寸和间距都相应变化，这是因为淘宝的尺寸也是使用了rem的原因。在介绍它的做法之前，先来了解一点关于viewport的知识，通常我们采用如下代码设置viewport:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot;   content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>这样整个网页在设备内显示时的页面宽度就会等于设备逻辑像素大小，也就是device-width。这个device-width的计算公式为：</p>
+<p><strong>设备的物理分辨率/(devicePixelRatio * scale)</strong>，在scale为1的情况下，device-width = 设备的物理分辨率/devicePixelRatio 。</p>
+<p>devicePixelRatio称为设备像素比，每款设备的devicePixelRatio都是已知，并且不变的，目前高清屏，普遍都是2，不过还有更高的，比如2.5, 3 等，魅族note的手机的devicePixelRatio就是3。淘宝触屏版布局的前提就是viewport的scale根据devicePixelRatio动态设置。</p>
+<ul>
+<li><p>在devicePixelRatio为2的时候，scale为0.5</p>
+</li>
+<li><p>在devicePixelRatio为3的时候，scale为0.3333</p>
+</li>
+</ul>
+<p>这么做目的当然是为了保证页面的大小与设计稿保持一致了，比如设计稿如果是750的横向分辨率，那么实际页面的device-width，以iphone6来说，也等于750，这样的话设计稿上标注的尺寸只要除以某一个值就能够转换为rem了。通过js设置viewport的方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var scale = 1 / devicePixelRatio;</span><br><span class="line"></span><br><span class="line">document</span><br><span class="line">    .querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;)</span><br><span class="line">    .setAttribute(&apos;content&apos;,&apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);</span><br></pre></td></tr></table></figure>
+<p>淘宝布局的第二个要点，就是html元素的font-size的计算公式，font-size = deviceWidth / 10：</p>
+<p>接下来要解决的问题是，元素的尺寸该如何计算，比如说设计稿上某一个元素的宽为150px，换算成rem应该怎么算呢？这个值等于设计稿标注尺寸/该设计稿对应的html的font-size。拿淘宝来说的，他们用的设计稿是750的，所以html的font-size就是75，如果某个元素时150px的宽，换算成rem就是150 / 75 = 2rem。总结下淘宝的这些做法：</p>
+<p>（1）动态设置viewport的scale</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var scale = 1 / devicePixelRatio;</span><br><span class="line"></span><br><span class="line">document</span><br><span class="line">    .querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;)</span><br><span class="line">    .setAttribute(&apos;content&apos;,&apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);</span><br></pre></td></tr></table></figure>
+<p>（2）动态计算html的font-size : <code>document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + &#39;px&#39;;</code></p>
+<p>（3）布局的时候，各元素的css尺寸=设计稿标注尺寸/设计稿横向分辨率/10</p>
+<p>（4）font-size可能需要额外的媒介查询，并且font-size不使用rem，这一点跟网易是一样的。<br>最后还有一个情况要说明，跟网易一样，淘宝也设置了一个临界点，当设备竖着时横向物理分辨率大于1080时，html的font-size就不会变化了，原因也是一样的，分辨率已经可以去访问电脑版页面了。</p>
+<blockquote>
+<p> 互联网上还有很多不同的布局方式，但是万变不离其宗，大致的思路就是这个样子的！</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/11/webStorage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          localStorage 和 sessionStorage 浏览器端数据储存
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/22/require-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Javascript模块化编程 — RequireJS</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="m-rem-layout" data-title="rem布局移动端自适应页面" data-url="http://yoursite.com/2016/10/14/m-rem-layout/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 wuyinxing
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
