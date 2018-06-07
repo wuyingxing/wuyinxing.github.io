@@ -163,6 +163,73 @@
 
       <div class="body-wrap">
   
+    <article id="post-m-webbug-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/23/m-webbug-3/" class="article-date">
+  	<time datetime="2016-06-22T16:00:00.000Z" itemprop="datePublished">2016-06-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/23/m-webbug-3/">Android手机浏览器overflow是scroll失效</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 在一个微信web项目中，发现Android手机浏览器中 overflow : scroll 失效</p>
+<p> Android低版本中 QQ X5浏览器 对div的 overflow支持很差，只能用body和html。</p>
+<p> 在4.0以上的浏览器中不能存在两个overflow是scroll的div，即：嵌套的overflow : scroll，第二个一定失效</p>
+<p> 第一种办法就是 : 在需要scroll时候，尽量保证当前页面只有一个overflow : scroll 作用于页面</p>
+<p> 第二种办法就是 : 采用iScroll插件（早期用过iScroll4，对于现在的iScroll5不怎么了解,还需要注意的是iscroll是存在BUG的）</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scroll/">scroll</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/mobileWeb/">mobileWeb</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-m-webbug-2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -506,92 +573,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/Node/">Node</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vue-key" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/18/vue-key/" class="article-date">
-  	<time datetime="2016-05-18T06:57:29.000Z" itemprop="datePublished">2016-05-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/18/vue-key/">Vue key的用法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>很多人在学习vue的过程中，只是知道v-for语句，添加key就不会有警告，仅仅如此而已！</p>
-</blockquote>
-<p>我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法（这里不做详细介绍）。因此key在日常使用中通常的作用有两点，其中第二点很少人使用：</p>
-<p><strong>1. key的作用主要是为了高效的更新虚拟DOM</strong></p>
-<p><strong>2. 完整地触发组件的生命周期钩子</strong></p>
-<hr>
-<p>首先我们聊一下v-for中的使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;...&lt;/li&gt;      </span><br><span class="line">  &lt;li v-for=&quot;(item,index) in items&quot; :key=&quot;index&quot;&gt;...&lt;/li&gt;</span><br><span class="line">  &lt;li v-for=&quot;(item,key,index) in items&quot; :key=&quot;key&quot;&gt;...&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-<p>上面代码是三种常用的Key的使用方式，但是这三种是有区别的，假设item是对象，且有id属性：</p>
-<blockquote>
-<p>第一种，当id值变化，元素（li）重新渲染，id值无变化，元素（li）不会重新渲染。 </p>
-<p>第二种，当id值变化，元素（li）不会重新渲染， 当改变位置时，元素（li）重新渲染。</p>
-<p>第三种，当id值变化，元素（li）不会重新渲染， 当改变位置时，元素（li）重新渲染。</p>
-</blockquote>
-<p>通过上面的三种结论我们得出：</p>
-<p><strong>使用v-for渲染元素时，使用元素自身的id属性去指定渲染元素的key值有利于单个元素的重新渲染，若采用其他如v-for提供的index, key等值，在改变渲染出来的DOM结构时，会触发所有元素的重新渲染，当数据过大时，可能会造成性能负担。</strong></p>
-<p><strong>因此当我们在使用v-for进行渲染时，尽可能使用渲染元素自身属性的id给渲染的元素绑定一个key值，这样在当前渲染元素的DOM结构发生变化时，能够单独响应该元素而不触发所有元素的渲染。</strong></p>
-<hr>
-<p>从上面的v-for实例中，如果我们把元素（li）替换成组件，该组件如果重新渲染，则会触发生命周期的钩子。</p>
-<p>下面我们通过实例来说明key的另一种使用方法.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper class=&quot;myswper&quot; ref=&quot;mySwiper&quot; :options=&quot;swiperOption&quot;   :key=&quot;swiperSlides.length&quot; &gt;</span><br><span class="line">    &lt;swiper-slide   class=&quot;swiper-no-swiping&quot; v-for=&quot;(file, index) in swiperSlides&quot; :key=&quot;index&quot;  &gt;</span><br><span class="line">        &lt;img class=&quot;myImgs&quot; :src=&quot;file.url&quot;  :draggable=&quot;false&quot; &gt;</span><br><span class="line">    &lt;/swiper-slide&gt;</span><br><span class="line">&lt;/swiper&gt;</span><br></pre></td></tr></table></figure>
-<p>上面这段代码其实是两个组件外层 <code>swiper</code>组件， 里面sort部分是新的组件<code>swiper-slide</code>。 <code>swiper</code>组件也有一个key属性，这样写的目的是当 <code>swiper-slide</code>的数据长度有变化，<code>swiper</code>会重新渲染，然后触发生命周期！</p>
-<p>也可以简单的理解为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;A-component :key=&quot;obj.length&quot; &gt;&lt;/A-component&gt;</span><br><span class="line">&lt;B-component  v-for=&quot;(item, index) in obj&quot; :key=&quot;index&quot; &gt;&lt;/B-component&gt;</span><br></pre></td></tr></table></figure>
-<p>A组件想要在B组件变化时，重新渲染自己。 我们可以改变他的Key来实现。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
 	</div>
 
 
