@@ -103,7 +103,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
+						<a href="/tags/API/" style="font-size: 20px;">API</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/base/" style="font-size: 10px;">base</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/globle/" style="font-size: 10px;">globle</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jQuery/" style="font-size: 20px;">jQuery</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/scroll/" style="font-size: 10px;">scroll</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/window/" style="font-size: 10px;">window</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,113 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-object-defineProperty" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/11/object-defineProperty/" class="article-date">
+  	<time datetime="2018-06-10T16:00:00.000Z" itemprop="datePublished">2018-06-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/11/object-defineProperty/">Object.defineProperty()的用法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h1><p><code>Object.defineProperty()</code> 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//基本用法</span><br><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br><span class="line">//实例</span><br><span class="line">let a = &#123;&#125;; </span><br><span class="line">Object.defineProperty(a, &apos;b&apos;, &#123;value:123&#125;)；</span><br><span class="line"></span><br><span class="line">//输出a = &#123;b:123&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>obj</strong><br>要在其上定义属性的对象。</p>
+<p><strong>prop</strong><br>要定义或修改的属性的名称。</p>
+<p><strong>descriptor</strong><br>将被定义或修改的属性描述符。</p>
+</blockquote>
+<p>这里我们详细对descriptor说明一下.</p>
+<blockquote>
+<p>descriptor对象里目前存在的属性描述符有两种主要形式：<strong>数据描述符</strong>和<strong>存取描述符</strong>。数据描述符是一个具有值的属性，该值可能是可写的，也可能不是可写的。存取描述符是由getter-setter函数对描述的属性。描述符必须是这两种形式之一；不能同时是两者。</p>
+</blockquote>
+<p><strong><code>descriptor</code>数据描述符和存取描述符均具有以下可选键值：</strong></p>
+<ol>
+<li><p><code>**configurable**</code><br>当且仅当该属性的 <code>configurable</code> 为 <code>true</code> 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 <code>false</code>。</p>
+</li>
+<li><p><code>**enumerable**</code><br>当且仅当该属性的<code>enumerable</code>为<code>true</code>时，该属性才能够出现在对象的枚举属性中。默认为 <code>false</code>。</p>
+</li>
+</ol>
+<p><strong>以上这两个属性为公共属性，可以和数据描述符以及存取描述符共同存在</strong></p>
+<p><strong>数据描述符同时具有以下可选键值</strong>：</p>
+<blockquote>
+<p><code>value</code><br>该属性对应的值。可以是任何有效的 <code>JavaScript</code> 值（数值，对象，函数等）。默认为 <code>undefined</code>。</p>
+<p><code>writable</code><br>当且仅当该属性的<code>writable</code>为<code>true</code>时，<code>value</code>才能被赋值运算符改变。默认为 <code>false</code>。</p>
+</blockquote>
+<p><strong>存取描述符同时具有以下可选键值</strong>：</p>
+<blockquote>
+<p><code>get</code><br>一个给属性提供 <code>getter</code> 的方法，如果没有 <code>getter</code> 则为 <code>undefined</code>。该方法返回值被用作属性值。默认为 <code>undefined</code>。</p>
+<p><code>set</code><br>一个给属性提供 <code>setter</code> 的方法，如果没有 <code>setter</code> 则为 <code>undefined</code>。该方法将接受唯一参数，并将该参数的新值分配给该属性。默认为 <code>undefined</code>。</p>
+</blockquote>
+<p><em>如果一个<code>descriptor</code>不具有<code>value</code>,<code>writable</code>,<code>get</code> 和 <code>set</code> 任意一个关键字，那么它将被认为是一个数据描述符。如果一个描述符同时有(<code>value</code>或<code>writable</code>)和(<code>get</code>或<code>set</code>)关键字，将会产生一个异常。</em></p>
+<p>记住，这些选项不一定是自身属性，如果是继承来的也要考虑。为了确认保留这些默认值，你可能要在这之前冻结 Object.prototype，明确指定所有的选项，或者将<strong>proto</strong>属性指向null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">var descriptor = Object.create(null); // 没有继承的属性</span><br><span class="line">// 默认没有 enumerable，没有 configurable，没有 writable</span><br><span class="line">descriptor.value = &apos;static&apos;;</span><br><span class="line">Object.defineProperty(obj, &apos;key&apos;, descriptor);</span><br><span class="line"></span><br><span class="line">// 显式</span><br><span class="line">Object.defineProperty(obj, &quot;key&quot;, &#123;</span><br><span class="line">  enumerable: false,</span><br><span class="line">  configurable: false,</span><br><span class="line">  writable: false,</span><br><span class="line">  value: &quot;static&quot;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 循环使用同一对象</span><br><span class="line">function withValue(value) &#123;</span><br><span class="line">  var d = withValue.d || (</span><br><span class="line">    withValue.d = &#123;</span><br><span class="line">      enumerable: false,</span><br><span class="line">      writable: false,</span><br><span class="line">      configurable: false,</span><br><span class="line">      value: null</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">  d.value = value;</span><br><span class="line">  return d;</span><br><span class="line">&#125;</span><br><span class="line">// ... 并且 ...</span><br><span class="line">Object.defineProperty(obj, &quot;key&quot;, withValue(&quot;static&quot;));</span><br><span class="line"></span><br><span class="line">// 如果 freeze 可用, 防止代码添加或删除对象原型的属性</span><br><span class="line">// （value, get, set, enumerable, writable, configurable）</span><br><span class="line">(Object.freeze||Object)(Object.prototype);</span><br></pre></td></tr></table></figure>
+<h2 id="创建属性"><a href="#创建属性" class="headerlink" title="创建属性"></a>创建属性</h2><p>如果对象中不存在指定的属性，Object.defineProperty()就创建这个属性。当描述符中省略某些字段时，这些字段将使用它们的默认值。拥有布尔值的字段的默认值都是false。value，get和set字段的默认值为undefined。一个没有get/set/value/writable定义的属性被称为“通用的”，并被“键入”为一个数据描述符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;; // 创建一个新对象</span><br><span class="line"></span><br><span class="line">// 在对象中添加一个属性与数据描述符的示例</span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123;</span><br><span class="line">  value : 37,</span><br><span class="line">  writable : true,</span><br><span class="line">  enumerable : true,</span><br><span class="line">  configurable : true</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 对象o拥有了属性a，值为37</span><br><span class="line"></span><br><span class="line">// 在对象中添加一个属性与存取描述符的示例</span><br><span class="line">var bValue;</span><br><span class="line">Object.defineProperty(o, &quot;b&quot;, &#123;</span><br><span class="line">  get : function()&#123;</span><br><span class="line">    return bValue;</span><br><span class="line">  &#125;,</span><br><span class="line">  set : function(newValue)&#123;</span><br><span class="line">    bValue = newValue;</span><br><span class="line">  &#125;,</span><br><span class="line">  enumerable : true,</span><br><span class="line">  configurable : true</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">o.b = 38;</span><br><span class="line">// 对象o拥有了属性b，值为38</span><br><span class="line"></span><br><span class="line">// o.b的值现在总是与bValue相同，除非重新定义o.b</span><br><span class="line"></span><br><span class="line">// 数据描述符和存取描述符不能混合使用</span><br><span class="line">Object.defineProperty(o, &quot;conflict&quot;, &#123;</span><br><span class="line">  value: 0x9f91102, </span><br><span class="line">  get: function() &#123; </span><br><span class="line">    return 0xdeadbeef; </span><br><span class="line">  &#125; </span><br><span class="line">&#125;);</span><br><span class="line">// throws a TypeError: value appears only in data descriptors, get appears only in accessor descriptors</span><br></pre></td></tr></table></figure>
+<h2 id="Writable-属性"><a href="#Writable-属性" class="headerlink" title="Writable 属性"></a>Writable 属性</h2><p>当writable属性设置为false时，该属性被称为“不可写”。它不能被重新分配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;; // Creates a new object</span><br><span class="line"></span><br><span class="line">Object.defineProperty(o, &apos;a&apos;, &#123;</span><br><span class="line">  value: 37,</span><br><span class="line">  writable: false</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(o.a); // logs 37</span><br><span class="line">o.a = 25; // No error thrown</span><br><span class="line">// (it would throw in strict mode,</span><br><span class="line">// even if the value had been the same)</span><br><span class="line">console.log(o.a); // logs 37. The assignment didn&apos;t work.</span><br><span class="line"></span><br><span class="line">// strict mode</span><br><span class="line">(function() &#123;</span><br><span class="line">  &apos;use strict&apos;;</span><br><span class="line">  var o = &#123;&#125;;</span><br><span class="line">  Object.defineProperty(o, &apos;b&apos;, &#123;</span><br><span class="line">    value: 2,</span><br><span class="line">    writable: false</span><br><span class="line">  &#125;);</span><br><span class="line">  o.b = 3; // throws TypeError: &quot;b&quot; is read-only</span><br><span class="line">  return o.b; // returns 2 without the line above</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<h2 id="Enumerable-特性"><a href="#Enumerable-特性" class="headerlink" title="Enumerable 特性"></a>Enumerable 特性</h2><p>enumerable定义了对象的属性是否可以在 for…in 循环和 Object.keys() 中被枚举。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;;</span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123; value : 1, enumerable:true &#125;);</span><br><span class="line">Object.defineProperty(o, &quot;b&quot;, &#123; value : 2, enumerable:false &#125;);</span><br><span class="line">Object.defineProperty(o, &quot;c&quot;, &#123; value : 3 &#125;); // enumerable defaults to false</span><br><span class="line">o.d = 4; // 如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true</span><br><span class="line"></span><br><span class="line">for (var i in o) &#123;    </span><br><span class="line">  console.log(i);  </span><br><span class="line">&#125;</span><br><span class="line">// 打印 &apos;a&apos; 和 &apos;d&apos; (in undefined order)</span><br><span class="line"></span><br><span class="line">Object.keys(o); // [&quot;a&quot;, &quot;d&quot;]</span><br><span class="line"></span><br><span class="line">o.propertyIsEnumerable(&apos;a&apos;); // true</span><br><span class="line">o.propertyIsEnumerable(&apos;b&apos;); // false</span><br><span class="line">o.propertyIsEnumerable(&apos;c&apos;); // false</span><br></pre></td></tr></table></figure>
+<h2 id="Configurable-特性"><a href="#Configurable-特性" class="headerlink" title="Configurable 特性"></a>Configurable 特性</h2><p>configurable特性表示对象的属性是否可以被删除，以及除writable特性外的其他特性是否可以被修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;;</span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123; get : function()&#123;return 1;&#125;, </span><br><span class="line">                                configurable : false &#125; );</span><br><span class="line"></span><br><span class="line">// throws a TypeError</span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123;configurable : true&#125;); </span><br><span class="line">// throws a TypeError</span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123;enumerable : true&#125;); </span><br><span class="line">// throws a TypeError (set was undefined previously) </span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123;set : function()&#123;&#125;&#125;); </span><br><span class="line">// throws a TypeError (even though the new get does exactly the same thing) </span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123;get : function()&#123;return 1;&#125;&#125;);</span><br><span class="line">// throws a TypeError</span><br><span class="line">Object.defineProperty(o, &quot;a&quot;, &#123;value : 12&#125;);</span><br><span class="line"></span><br><span class="line">console.log(o.a); // logs 1</span><br><span class="line">delete o.a; // Nothing happens</span><br><span class="line">console.log(o.a); // logs 1</span><br></pre></td></tr></table></figure>
+<p>如果o.a的configurable属性为true，则不会抛出任何错误，并且该属性将在最后被删除。</p>
+<h2 id="Setters-和-Getters"><a href="#Setters-和-Getters" class="headerlink" title="Setters 和 Getters"></a>Setters 和 Getters</h2><p>下面的例子展示了如何实现一个自存档对象。 当设置temperature 属性时，archive 数组会获取日志条目。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function Archiver() &#123;</span><br><span class="line">  var temperature = null;</span><br><span class="line">  var archive = [];</span><br><span class="line"></span><br><span class="line">  Object.defineProperty(this, &apos;temperature&apos;, &#123;</span><br><span class="line">    get: function() &#123;</span><br><span class="line">      console.log(&apos;get!&apos;);</span><br><span class="line">      return temperature;</span><br><span class="line">    &#125;,</span><br><span class="line">    set: function(value) &#123;</span><br><span class="line">      temperature = value;</span><br><span class="line">      archive.push(&#123; val: temperature &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  this.getArchive = function() &#123; return archive; &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var arc = new Archiver();</span><br><span class="line">arc.temperature; // &apos;get!&apos;</span><br><span class="line">arc.temperature = 11;</span><br><span class="line">arc.temperature = 13;</span><br><span class="line">arc.getArchive(); // [&#123; val: 11 &#125;, &#123; val: 13 &#125;]</span><br></pre></td></tr></table></figure>
+<h2 id="属性和默认值"><a href="#属性和默认值" class="headerlink" title="属性和默认值"></a>属性和默认值</h2><p>数据描述符中的属性默认值是不同的</p>
+<p>```<br>var o = {};</p>
+<p>o.a = 1;<br>// 等同于 :<br>Object.defineProperty(o, “a”, {<br>  value : 1,<br>  writable : true,<br>  configurable : true,<br>  enumerable : true<br>});</p>
+<p>// 另一方面，<br>Object.defineProperty(o, “a”, { value : 1 });<br>// 等同于 :<br>Object.defineProperty(o, “a”, {<br>  value : 1,<br>  writable : false,<br>  configurable : false,<br>  enumerable : false<br>});<br>``</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object/">Object</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-vue-key" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1219,97 +1326,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">io.sockets.on(&apos;connection&apos;, function (socket) &#123;</span><br><span class="line">  socket.emit(&apos;news&apos;, &#123; hello: &apos;world&apos; &#125;);</span><br><span class="line">  socket.on(&apos;anotherNews&apos;, function (data) &#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>上面代码的io.sockets.on方法指定connection事件（WebSocket连接建立）的回调函数。在回调函数中，用emit方法向客户端发送数据，触发客户端的news事件。然后，再用on方法指定服务器端anotherNews事件的回调函数。</p>
 <p>不管是服务器还是客户端，socket.io提供两个核心方法：emit方法用于发送消息，on方法用于监听对方发送的消息。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/HTML/">HTML</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-svg" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/04/svg/" class="article-date">
-  	<time datetime="2016-07-03T16:00:00.000Z" itemprop="datePublished">2016-07-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/04/svg/">HTML中SVG图像图像处理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SVG是“可缩放矢量图”（Scalable Vector Graphics）的缩写，是一种描述向量图形的XML格式的标记化语言。也就是说，SVG本质上是文本文件，格式采用XML，可以在浏览器中显示出矢量图像。由于结构是XML格式，使得它可以插入HTML文档，成为DOM的一部分，然后用JavaScript和CSS进行操作。<br>相比传统的图像文件格式（比如JPG和PNG），SVG图像的优势就是文件体积小，并且放大多少倍都不会失真，因此非常合适用于网页。</p>
-<p>SVG图像可以用Adobe公司的Illustrator软件、开源软件Inkscape等生成。目前，所有主流浏览器都支持，对于低于IE 9的浏览器，可以使用第三方的polyfills函数库。</p>
-<h2 id="插入SVG文件"><a href="#插入SVG文件" class="headerlink" title="插入SVG文件"></a>插入SVG文件</h2><p>SVG插入网页的方法有多种，可以用在img、object、embed、iframe等标签，以及CSS的background-image属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;circle.svg&quot;&gt;</span><br><span class="line">&lt;object id=&quot;object&quot; data=&quot;circle.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span><br><span class="line">&lt;embed id=&quot;embed&quot; src=&quot;icon.svg&quot; type=&quot;image/svg+xml&quot;&gt;</span><br><span class="line">&lt;iframe id=&quot;iframe&quot; src=&quot;icon.svg&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-<p>上面是四种在网页中插入SVG图像的方式。</p>
-<p>此外，SVG文件还可以插入其他DOM元素，比如div元素，请看下面的例子（使用了jQuery函数库）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;stage&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">$(&quot;#stage&quot;).load(&apos;icon.svg&apos;,function(response)&#123;</span><br><span class="line">  $(this).addClass(&quot;svgLoaded&quot;);</span><br><span class="line">  if(!response)&#123;</span><br><span class="line">    // 加载失败的处理代码</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="svg格式"><a href="#svg格式" class="headerlink" title="svg格式"></a>svg格式</h2><p>SVG文件采用XML格式，就是普通的文本文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">  &lt;circle cx=&quot;30&quot;  cy=&quot;50&quot; r=&quot;25&quot; /&gt;</span><br><span class="line">  &lt;circle cx=&quot;90&quot;  cy=&quot;50&quot; r=&quot;25&quot; class=&quot;red&quot; /&gt;</span><br><span class="line">  &lt;circle cx=&quot;150&quot; cy=&quot;50&quot; r=&quot;25&quot; class=&quot;fancy&quot; /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-<p>上面的svg文件，定义了三个圆，它们的cx、cy、r属性分别为x坐标、y坐标和半径。利用class属性，可以为这些圆指定样式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.red &#123;</span><br><span class="line">  fill: red; /* not background-color! */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.fancy &#123;</span><br><span class="line">  fill: none;</span><br><span class="line">  stroke: black; /* similar to border-color */</span><br><span class="line">  stroke-width: 3pt; /* similar to border-width */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码中，fill属性表示填充色，stroke属性表示描边色，stroke-width属性表示边线宽度。</p>
-<p>除了circle标签表示圆，SVG文件还可以使用表示其他形状的标签。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;</span><br><span class="line">  &lt;line x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;200&quot; y2=&quot;0&quot; style=&quot;stroke:rgb(0,0,0);stroke-width:1&quot;/&gt;&lt;/line&gt;</span><br><span class="line">  &lt;rect x=&quot;0&quot; y=&quot;0&quot; height=&quot;100&quot; width=&quot;200&quot; style=&quot;stroke: #70d5dd; fill: #dd524b&quot; /&gt;</span><br><span class="line">  &lt;ellipse cx=&quot;60&quot; cy=&quot;60&quot; ry=&quot;40&quot; rx=&quot;20&quot; stroke=&quot;black&quot; stroke-width=&quot;5&quot; fill=&quot;silver&quot;/&gt;&lt;/ellipse&gt;</span><br><span class="line">	&lt;polygon fill=&quot;green&quot; stroke=&quot;orange&quot; stroke-width=&quot;10&quot; points=&quot;350, 75  379,161 469,161 397,215 423,301 350,250 277,301 303,215 231,161 321,161&quot;/&gt;&lt;polygon&gt;</span><br><span class="line">	&lt;path id=&quot;path1&quot; d=&quot;M160.143,196c0,0,62.777-28.033,90-17.143c71.428,28.572,73.952-25.987,84.286-21.428&quot; style=&quot;fill:none;stroke:2;&quot;&gt;&lt;/path&gt;  </span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，line、rect、ellipse、polygon和path标签，分别表示线条、矩形、椭圆、多边形和路径。</p>
-<p>g标签用于将多个形状组成一组，表示group。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">  &lt;g transform=&quot;translate(5, 15)&quot;&gt;</span><br><span class="line">    &lt;text x=&quot;0&quot; y=&quot;0&quot;&gt;Howdy!&lt;/text&gt;</span><br><span class="line">    &lt;path d=&quot;M0,50 L50,0 Q100,0 100,50&quot;</span><br><span class="line">      fill=&quot;none&quot; stroke-width=&quot;3&quot; stroke=&quot;black&quot; /&gt;</span><br><span class="line">  &lt;/g&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="SVG文件的JavaScript操作"><a href="#SVG文件的JavaScript操作" class="headerlink" title="SVG文件的JavaScript操作"></a>SVG文件的JavaScript操作</h2><ul>
-<li>获取SVG DOM<br>如果使用img标签插入SVG文件，则无法获取SVG DOM。使用object、iframe、embed标签，可以获取SVG DOM。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var svgObject = document.getElementById(&quot;object&quot;).contentDocument;</span><br><span class="line">var svgIframe = document.getElementById(&quot;iframe&quot;).contentDocument;</span><br><span class="line">var svgEmbed = document.getElementById(&quot;embed&quot;).getSVGDocument();</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>由于svg文件就是一般的XML文件，因此可以用DOM方法，选取页面元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 改变填充色</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).style.fill = &quot;red&quot;;</span><br><span class="line"></span><br><span class="line">// 改变元素属性</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).setAttribute(&quot;class&quot;, &quot;changedColors&quot;);</span><br><span class="line"></span><br><span class="line">// 绑定事件回调函数</span><br><span class="line">document.getElementById(&quot;theCircle&quot;).addEventListener(&quot;click&quot;, function() &#123;</span><br><span class="line">   console.log(&quot;clicked&quot;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>读取svg源码<br>由于svg文件就是一个XML代码的文本文件，因此可以通过读取XML代码的方式，读取svg源码。<br>假定网页中有一个svg元素。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;svg-container&quot;&gt;</span><br><span class="line">	&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xml:space=&quot;preserve&quot; width=&quot;500&quot; height=&quot;440&quot;&gt;</span><br><span class="line">		&lt;!-- svg code --&gt;</span><br><span class="line">	&lt;/svg&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>使用XMLSerializer实例的serializeToString方法，获取svg元素的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var svgString = new XMLSerializer().serializeToString(document.querySelector(&apos;svg&apos;));</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>将svg图像转为canvas图像<br>首先，需要新建一个img对象，将svg图像指定到该img对象的src属性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var img = new Image();</span><br><span class="line">var svg = new Blob([svgString], &#123;type: &quot;image/svg+xml;charset=utf-8&quot;&#125;);</span><br><span class="line"></span><br><span class="line">var DOMURL = self.URL || self.webkitURL || self;</span><br><span class="line">var url = DOMURL.createObjectURL(svg);</span><br><span class="line"></span><br><span class="line">img.src = url;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>然后，当图像加载完成后，再将它绘制到canvas元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">img.onload = function() &#123;</span><br><span class="line">	var canvas = document.getElementById(&quot;canvas&quot;);</span><br><span class="line">	var ctx = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">    ctx.drawImage(img, 0, 0);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
